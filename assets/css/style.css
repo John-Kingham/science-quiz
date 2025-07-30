@@ -1,7 +1,4 @@
 /* Test styles */
-* {
-    border: 1px solid grey;
-}
 
 /* General styles */
 body {
@@ -9,6 +6,10 @@ body {
     flex-direction: column;
     min-height: 100vh;
     align-items: center;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Header styles */
