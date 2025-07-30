@@ -4,17 +4,32 @@
 }
 
 /* General styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    align-items: center;
 }
+
+/* Header styles */
+
+header {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+/* Main styles */
+
+main {
+    max-width: 33%;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Footer styles */
 
 footer {
     margin-top: auto;
