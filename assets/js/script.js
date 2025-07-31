@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /**
- * Show the instructions panel
+ * Only show the instructions panel
  */
 function showInstructions() {
-    instructions.classList.toggle('hidden');
-    welcome.classList.toggle('hidden');
-    instructionsButton.classList.toggle('hidden');
+    welcome.classList.add('hidden');
+    instructionsBtn.classList.add('hidden');
+    instructions.classList.remove('hidden');
 }
 
 
@@ -41,14 +41,15 @@ function showInstructions() {
  * Show the game panel and start the game
  */
 function startGame() {
-    // show the game and hide non-game content
-    welcome.classList.toggle('hidden');
-    playBtn.classList.toggle('hidden');
-    instructionsBtn.classList.toggle('hidden');
-    fiftyBtn.classList.toggle('hidden');
-    askBtn.classList.toggle('hidden');
-    phoneBtn.classList.toggle('hidden');
+    // hide non-game content
+    welcome.classList.add('hidden');
+    instructions.classList.add('hidden');
+    playBtn.classList.add('hidden');
+    instructionsBtn.classList.add('hidden');
 
-    // show the game panel
-    game.classList.toggle('hidden');
+    // show the game panel and game buttons
+    game.classList.remove('hidden');
+    fiftyBtn.classList.remove('hidden');
+    askBtn.classList.remove('hidden');
+    phoneBtn.classList.remove('hidden');
 }

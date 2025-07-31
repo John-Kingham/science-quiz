@@ -35,6 +35,11 @@ button {
     margin: 0.5rem;
 }
 
+#answers button {
+    display: block;
+    width: 100%;
+}
+
 /* Footer styles */
 
 footer {
