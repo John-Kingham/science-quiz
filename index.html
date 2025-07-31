@@ -30,7 +30,7 @@
         </header>
         <main>
             <section id="content">
-                <section id="welcome-txt">
+                <section id="welcome">
                     <p><strong>Welcome to The Science Quiz!</strong></p>
                     <p>
                         Test your knowledge of science and nature with this
@@ -39,7 +39,7 @@
                         points! What are you waiting for?!?
                     </p>
                 </section>
-                <section id="instructions-txt" class="hidden">
+                <section id="instructions" class="hidden">
                     <p><strong>Instructions</strong></p>
                     <ol>
                         <li>Answer each question in turn</li>
@@ -70,9 +70,21 @@
                     </ol>
                 </section>
             </section>
+            <section id="game" class="hidden">
+                <div id="question">This is a test question?</div>
+                <div id="answers">
+                    <button id="answer-a">Answer A</button>
+                    <button id="answer-b">Answer B</button>
+                    <button id="answer-c">Answer C</button>
+                    <button id="answer-d">Answer D</button>
+                </div>
+            </section>
             <section id="buttons">
                 <button id="play-btn">Play Game</button>
                 <button id="instructions-btn">Instructions</button>
+                <button id="fifty-btn" class="hidden">50/50</button>
+                <button id="ask-btn" class="hidden">Ask the Internet</button>
+                <button id="phone-btn" class="hidden">Phone a Scientist</button>
             </section>
         </main>
         <footer>Resource links</footer>
