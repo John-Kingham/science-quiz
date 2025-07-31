@@ -1,3 +1,4 @@
+// Global variables for DOM elements
 let welcome;
 let instructions;
 let game;
@@ -6,6 +7,7 @@ let instructionsBtn;
 let fiftyBtn;
 let askBtn;
 let phoneBtn;
+
 
 // Wait for the DOM to finish loading before running this script
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,7 +41,7 @@ function showInstructions() {
  * Show the game panel and start the game
  */
 function startGame() {
-    // hide non-in-game content
+    // show the game and hide non-game content
     welcome.classList.toggle('hidden');
     playBtn.classList.toggle('hidden');
     instructionsBtn.classList.toggle('hidden');
