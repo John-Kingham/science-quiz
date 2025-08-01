@@ -7,15 +7,18 @@ let instructionsBtn;
 let fiftyBtn;
 let askBtn;
 let phoneBtn;
+let playAgainBtn;
 let questionTxt;
 let feedbackTxt;
 let answerBtns;
 let multiChoiceQuestions;
 let multiChoiceQuestion;
+loadQuestions(); // load questions from API as soon as possible
 
 
 // Wait for the DOM to finish loading before running this script
 document.addEventListener('DOMContentLoaded', () => {
+
     // set up DOM variables
     welcomeTxt = document.querySelector('#welcome-txt');
     instructionsTxt = document.querySelector('#instructions-txt');
@@ -28,10 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fiftyBtn = document.querySelector('#fifty-btn');
     askBtn = document.querySelector('#ask-btn');
     phoneBtn = document.querySelector('#phone-btn');
-    loadQuestions();
+    playAgainBtn = document.querySelector('#play-again');
 
     // add event listeners to buttons
     instructionsBtn.addEventListener('click', showInstructions);
+    playAgainBtn.addEventListener('click', reloadPage);
     playBtn.addEventListener('click', startGame);
     for (const answerBtn of answerBtns.children) {
         answerBtn.addEventListener('click', processAnswer);
@@ -115,7 +119,6 @@ function showNextQuestion() {
 function processAnswer(event) {
     let button = event.target;
 
-    // if the answer is correct
     if (button.innerText === multiChoiceQuestion.correct_answer) {
         button.classList.add('green');
         feedbackTxt.innerHTML = 'Correct! You now have XXX points!';
@@ -130,8 +133,15 @@ function processAnswer(event) {
         fiftyBtn.classList.add('hidden');
         askBtn.classList.add('hidden');
         phoneBtn.classList.add('hidden');
-        // show the non-game buttons
-        playBtn.classList.remove('hidden');
-        instructionsBtn.classList.remove('hidden');
+        // show the Play Again button
+        playAgainBtn.classList.remove('hidden');
     }
+}
+
+
+/**
+ * Reload the page to start a new game.
+ */
+function reloadPage() {
+    window.location.reload();
 }
