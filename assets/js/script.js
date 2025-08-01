@@ -46,6 +46,7 @@ function showInstructions() {
     welcomeTxt.classList.add('hidden');
     instructionsBtn.classList.add('hidden');
     instructionsTxt.classList.remove('hidden');
+    gameArea.classList.add('hidden');
 }
 
 
@@ -117,9 +118,20 @@ function processAnswer(event) {
     // if the answer is correct
     if (button.innerText === multiChoiceQuestion.correct_answer) {
         button.classList.add('green');
-        feedbackTxt.innerText = 'Correct!';
+        feedbackTxt.innerHTML = 'Correct! You now have XXX points!';
         setTimeout(showNextQuestion, 2000);
     } else {
         button.classList.add('red');
+        feedbackTxt.innerHTML = 
+            `Wrong! That means it's game over for you! 
+            Your final score was XXX points! 
+            Click Play Game to try to beat your score!`;
+        // hide the game buttons
+        fiftyBtn.classList.add('hidden');
+        askBtn.classList.add('hidden');
+        phoneBtn.classList.add('hidden');
+        // show the non-game buttons
+        playBtn.classList.remove('hidden');
+        instructionsBtn.classList.remove('hidden');
     }
 }
