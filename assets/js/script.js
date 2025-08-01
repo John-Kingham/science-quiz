@@ -1,26 +1,28 @@
 // Global variables for DOM elements
-let welcome;
-let instructions;
-let game;
+let welcomeTxt;
+let instructionsTxt;
+let gameArea;
 let playBtn;
 let instructionsBtn;
 let fiftyBtn;
 let askBtn;
 let phoneBtn;
-let question;
-let answers;
-let questionsAndAnswers;
-let currentQuestion;
+let questionTxt;
+let feedbackTxt;
+let answerBtns;
+let multiChoiceQuestions;
+let multiChoiceQuestion;
 
 
 // Wait for the DOM to finish loading before running this script
 document.addEventListener('DOMContentLoaded', () => {
     // set up DOM variables
-    welcome = document.querySelector('#welcome');
-    instructions = document.querySelector('#instructions');
-    game = document.querySelector('#game');
-    question = document.querySelector('#question');
-    answers = document.querySelector('#answers');
+    welcomeTxt = document.querySelector('#welcome-txt');
+    instructionsTxt = document.querySelector('#instructions-txt');
+    gameArea = document.querySelector('#game-area');
+    questionTxt = document.querySelector('#question-txt');
+    feedbackTxt = document.querySelector('#feedback-txt');
+    answerBtns = document.querySelector('#answer-btns');
     playBtn = document.querySelector('#play-btn');
     instructionsBtn = document.querySelector('#instructions-btn');
     fiftyBtn = document.querySelector('#fifty-btn');
@@ -31,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // add event listeners to buttons
     instructionsBtn.addEventListener('click', showInstructions);
     playBtn.addEventListener('click', startGame);
+    for (const answerBtn of answerBtns.children) {
+        answerBtn.addEventListener('click', processAnswer);
+    }
 });
 
 
@@ -38,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
  * Only show the instructions panel
  */
 function showInstructions() {
-    welcome.classList.add('hidden');
+    welcomeTxt.classList.add('hidden');
     instructionsBtn.classList.add('hidden');
-    instructions.classList.remove('hidden');
+    instructionsTxt.classList.remove('hidden');
 }
 
 
@@ -53,17 +58,16 @@ function startGame() {
     showNextQuestion();
 
     // hide non-game content
-    welcome.classList.add('hidden');
-    instructions.classList.add('hidden');
+    welcomeTxt.classList.add('hidden');
+    instructionsTxt.classList.add('hidden');
     playBtn.classList.add('hidden');
     instructionsBtn.classList.add('hidden');
 
-    // show the game panel and game buttons
-    game.classList.remove('hidden');
+    // show the game panel and buttons
+    gameArea.classList.remove('hidden');
     fiftyBtn.classList.remove('hidden');
     askBtn.classList.remove('hidden');
     phoneBtn.classList.remove('hidden');
-
 }
 
 
@@ -71,10 +75,10 @@ function startGame() {
  * Load questions (and answers)
  */
 function loadQuestions() {
-    fetch('https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple')
+    fetch('https://opentdb.com/api.php?amount=5&category=17&difficulty=easy&type=multiple')
     .then(response => response.json())
     .then(json => {
-        questionsAndAnswers = json.results;
+        multiChoiceQuestions = json.results;
     });
 }
 
@@ -83,27 +87,39 @@ function loadQuestions() {
  * Show the next question
  */
 function showNextQuestion() {
-    currentQuestion = questionsAndAnswers.pop();
-    question.innerText = currentQuestion.question;
-    for (i = 0; i < 3; i++) {
-        answers.children[i].innerText = currentQuestion.incorrect_answers[i]; 
+    let answers = [];
+    
+    // update screen with next question
+    multiChoiceQuestion = multiChoiceQuestions.pop();
+    questionTxt.innerHTML = multiChoiceQuestion.question;
+    feedbackTxt.innerHTML = '&nbsp;';
+    
+    // update answer buttons with answers
+    answers.push(multiChoiceQuestion.correct_answer);
+    for (let incorrectAnswer of multiChoiceQuestion.incorrect_answers) {
+        answers.push(incorrectAnswer);
     }
-    answers.children[3].innerText = currentQuestion.correct_answer;
-    console.log(currentQuestion.correct_answer);
-    shuffleQuestions(answers.children);
+    answers.sort(); // sort to randomise
+    for (i = 0; i < answers.length; i++) {
+        answerBtns.children[i].innerText = answers[i];
+        answerBtns.children[i].classList.remove('green', 'red');
+    }
 }
 
+
 /**
- * Shuffle an array-like object
- * @param {*} arr 
- * @returns undefined (mutates the passed-in array)
+ * Check and respond to the user's chosen answer
+ * @param {Event} event 
  */
-function shuffleQuestions(arr) {
-    // Use the Fisher–Yates shuffle
-    for (let i = arr.length - 1; i > 0; i--) {
-         // pick random index from 0 to i
-        const j = Math.floor(Math.random() * (i + 1));
-        // swap the questions
-        [arr[i].innerText, arr[j].innerText] = [arr[j].innerText, arr[i].innerText]; 
+function processAnswer(event) {
+    let button = event.target;
+
+    // if the answer is correct
+    if (button.innerText === multiChoiceQuestion.correct_answer) {
+        button.classList.add('green');
+        feedbackTxt.innerText = 'Correct!';
+        setTimeout(showNextQuestion, 2000);
+    } else {
+        button.classList.add('red');
     }
 }
