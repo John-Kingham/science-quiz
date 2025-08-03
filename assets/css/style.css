@@ -22,7 +22,12 @@ header {
 /* Main styles */
 
 main {
-    max-width: 33%;
+    width: 30rem;
+}
+
+#game-area, #welcome-txt, #instructions-txt {
+    border: 1px solid black;
+    padding: 1rem;
 }
 
 #game-btns {
@@ -38,6 +43,7 @@ button {
 #answer-btns button {
     display: block;
     width: 100%;
+    margin: 0.5rem auto;
 }
 
 .green {
