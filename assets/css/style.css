@@ -7,11 +7,10 @@
     --heading-font: "Audiowide", serif;
     --body-font: "Noto Sans", sans-serif;
     --primary-color: #D45179;
-    --primary-color-dark: #Af538C;
     --secondary-color: #3A5172;
     --text-color: #FFF;
     --shadow-color: #333;
-    --win-color: #00c8a1;
+    --contrast-color: #00C8A1;
 }
 
 /* General styles */
@@ -60,32 +59,30 @@ main {
     color: var(--text-color);
 }
 
-#game-btns {
+#nav-btns, #help-btns {
     display: flex;
-    justify-content: space-around;
 }
 
 button {
-    padding: 0.5rem;
-    margin: 0.5rem;
-}
-
-.answer-btn {
-    display: block;
-    width: 100%;
-    margin: 0.5rem auto;
+    padding: 0.75rem;
+    margin: 1rem auto;
     background-color: var(--secondary-color);
     color: var(--text-color);
     font-family: var(--body-font);
     font-weight: 700;
     font-size: 1rem;
-    border: 0.25rem solid var(--primary-color-dark);
-    border-radius: 1rem;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
+    border-radius: 1rem;
+    border: 0.25rem solid var(--contrast-color);
+}
+
+.answer-btn {
+    display: block;
+    width: 100%;
 }
 
 .green {
-    background-color: var(--win-color);
+    background-color: var(--contrast-color);
 }
 
 .red {
