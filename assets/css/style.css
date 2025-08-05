@@ -4,11 +4,14 @@
 /* CSS variables */
 
 :root {
-    --heading-font: "Audiowide", sans-serif;
+    --heading-font: "Audiowide", serif;
+    --body-font: "Noto Sans", sans-serif;
     --primary-color: #D45179;
+    --primary-color-dark: #Af538C;
     --secondary-color: #3A5172;
     --text-color: #FFF;
     --shadow-color: #333;
+    --win-color: #00c8a1;
 }
 
 /* General styles */
@@ -67,18 +70,26 @@ button {
     margin: 0.5rem;
 }
 
-#answer-btns button {
+.answer-btn {
     display: block;
     width: 100%;
     margin: 0.5rem auto;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-family: var(--body-font);
+    font-weight: 700;
+    font-size: 1rem;
+    border: 0.25rem solid var(--primary-color-dark);
+    border-radius: 1rem;
+    box-shadow: 0 2px 2px 0 var(--shadow-color);
 }
 
 .green {
-    background-color: lightgreen;
+    background-color: var(--win-color);
 }
 
 .red {
-    background-color: red;
+    background-color: var(--primary-color);
 }
 
 /* Footer styles */
