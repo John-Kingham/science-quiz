@@ -13,7 +13,7 @@ let feedbackTxt;
 let answerBtns;
 let multiChoiceQuestions;
 let multiChoiceQuestion;
-loadQuestions(); // load questions from API as soon as possible
+loadQuestions(); // get questions from API now to give them time to load
 
 
 // Wait for the DOM to finish loading before running this script
