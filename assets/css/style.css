@@ -5,8 +5,9 @@
 
 :root {
     --heading-font: "Audiowide", sans-serif;
-    --primary-color: #d45179;
-    --text-color: #fff;
+    --primary-color: #D45179;
+    --secondary-color: #3A5172;
+    --text-color: #FFF;
     --shadow-color: #333;
 }
 
@@ -31,13 +32,12 @@ body {
 
 header {
     width: 100%;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     background-color: var(--primary-color);
     color: var(--text-color);
     text-align: center;
     font-family: var(--heading-font);
     text-shadow: 3px 3px 3px var(--shadow-color);
-    font-size: 1.5rem;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
 }
 
@@ -48,8 +48,13 @@ main {
 }
 
 #game-area, #welcome-txt, #instructions-txt {
-    border: 1px solid black;
+    border: 0.5rem solid var(--primary-color);
+    border-radius: 1rem;
+    box-shadow: 0 2px 2px 0 var(--shadow-color);
     padding: 1rem;
+    font-family: "Noto Sans";
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 #game-btns {
