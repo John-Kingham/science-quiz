@@ -1,56 +1,67 @@
 // Global variables for DOM elements
-let welcomeTxt;
-let instructionsTxt;
-let gameArea;
-let playBtn;
-let instructionsBtn;
-let fiftyBtn;
-let askBtn;
-let phoneBtn;
-let playAgainBtn;
-let questionTxt;
-let feedbackTxt;
-let answerBtns;
+const welcomeTxt = document.querySelector('#welcome-txt');
+const instructionsTxt = document.querySelector('#instructions-txt');
+const gameArea = document.querySelector('#game-area');
+const questionTxt = document.querySelector('#question-txt');
+const feedbackTxt = document.querySelector('#feedback-txt');
+const answerBtns = document.querySelector('#answer-btns');
+const playBtn = document.querySelector('#play-btn');
+const instructionsBtn = document.querySelector('#instructions-btn');
+const fiftyBtn = document.querySelector('#fifty-btn');
+const askBtn = document.querySelector('#ask-btn');
+const phoneBtn = document.querySelector('#phone-btn');
+const playAgainBtn = document.querySelector('#play-again');
+
 let multiChoiceQuestions;
 let multiChoiceQuestion;
-loadQuestions(); // get questions from API now to give them time to load
 
+loadQuestions();
+addEventListeners();
 
-// Wait for the DOM to finish loading before running this script
-document.addEventListener('DOMContentLoaded', () => {
-
-    // set up DOM variables
-    welcomeTxt = document.querySelector('#welcome-txt');
-    instructionsTxt = document.querySelector('#instructions-txt');
-    gameArea = document.querySelector('#game-area');
-    questionTxt = document.querySelector('#question-txt');
-    feedbackTxt = document.querySelector('#feedback-txt');
-    answerBtns = document.querySelector('#answer-btns');
-    playBtn = document.querySelector('#play-btn');
-    instructionsBtn = document.querySelector('#instructions-btn');
-    fiftyBtn = document.querySelector('#fifty-btn');
-    askBtn = document.querySelector('#ask-btn');
-    phoneBtn = document.querySelector('#phone-btn');
-    playAgainBtn = document.querySelector('#play-again');
-
-    // add event listeners to buttons
+/**
+ * Add event listeners to buttons
+ */
+function addEventListeners() {
     instructionsBtn.addEventListener('click', showInstructions);
     playAgainBtn.addEventListener('click', reloadPage);
     playBtn.addEventListener('click', startGame);
     for (const answerBtn of answerBtns.children) {
         answerBtn.addEventListener('click', processAnswer);
     }
-});
+}
 
 
 /**
  * Only show the instructions panel
  */
 function showInstructions() {
-    welcomeTxt.classList.add('hidden');
-    instructionsBtn.classList.add('hidden');
-    instructionsTxt.classList.remove('hidden');
-    gameArea.classList.add('hidden');
+    setMode('instructions');
+}
+
+
+/**
+ * Sets the game's display mode.
+ */
+function setMode(mode) {
+    switch (mode) {
+        case 'instructions':
+            welcomeTxt.classList.add('hidden');
+            instructionsBtn.classList.add('hidden');
+            instructionsTxt.classList.remove('hidden');
+            gameArea.classList.add('hidden');
+            break;
+        case 'game':
+            // hide non-game content
+            welcomeTxt.classList.add('hidden');
+            instructionsTxt.classList.add('hidden');
+            playBtn.classList.add('hidden');
+            instructionsBtn.classList.add('hidden');
+            // show the game panel and buttons
+            gameArea.classList.remove('hidden');
+            fiftyBtn.classList.remove('hidden');
+            askBtn.classList.remove('hidden');
+            phoneBtn.classList.remove('hidden');
+    }
 }
 
 
@@ -58,21 +69,8 @@ function showInstructions() {
  * Show the game panel and start the game
  */
 function startGame() {
-
-    // show the first question
     showNextQuestion();
-
-    // hide non-game content
-    welcomeTxt.classList.add('hidden');
-    instructionsTxt.classList.add('hidden');
-    playBtn.classList.add('hidden');
-    instructionsBtn.classList.add('hidden');
-
-    // show the game panel and buttons
-    gameArea.classList.remove('hidden');
-    fiftyBtn.classList.remove('hidden');
-    askBtn.classList.remove('hidden');
-    phoneBtn.classList.remove('hidden');
+    setMode('game');
 }
 
 
