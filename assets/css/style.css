@@ -1,4 +1,14 @@
-/* Test styles */
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* CSS variables */
+
+:root {
+    --heading-font: "Audiowide", sans-serif;
+    --primary-color: #d45179;
+    --text-color: #fff;
+    --shadow-color: #333;
+}
 
 /* General styles */
 body {
@@ -10,6 +20,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     align-items: center;
+    margin: 0;
 }
 
 .hidden {
@@ -19,14 +30,21 @@ body {
 /* Header styles */
 
 header {
-    margin-top: 2rem;
+    width: 100%;
     margin-bottom: 5rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    font-family: var(--heading-font);
+    text-shadow: 3px 3px 3px var(--shadow-color);
+    font-size: 1.5rem;
+    box-shadow: 0 2px 2px 0 var(--shadow-color);
 }
 
 /* Main styles */
 
 main {
-    width: 30rem;
+    width: 90%;
 }
 
 #game-area, #welcome-txt, #instructions-txt {
