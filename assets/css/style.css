@@ -72,13 +72,13 @@ button {
     font-family: var(--body-font);
     font-weight: 700;
     font-size: 1rem;
-    box-shadow: 5px 5px 10px 0 var(--shadow-color);
+    box-shadow: 0 2px 2px 0 var(--shadow-color);
     border-radius: 1rem;
     border: 0.25rem solid var(--contrast-color);
 }
 
 button:hover {
-    box-shadow: 0 0 30px 0 var(--contrast-color);
+    box-shadow: 0 0 10px 0 var(--contrast-color);
 }
 
 .answer-btn {

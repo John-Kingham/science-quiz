@@ -12,11 +12,12 @@ const askBtn = document.querySelector('#ask-btn');
 const phoneBtn = document.querySelector('#phone-btn');
 const playAgainBtn = document.querySelector('#play-again');
 
-let multiChoiceQuestions;
-let multiChoiceQuestion;
+let questions;
+let currentQuestion;
 
 loadQuestions();
 addEventListeners();
+
 
 /**
  * Add event listeners to buttons
@@ -32,10 +33,50 @@ function addEventListeners() {
 
 
 /**
- * Only show the instructions panel
+ * Load questions (and answers)
  */
-function showInstructions() {
-    setMode('instructions');
+function loadQuestions() {
+    fetch('https://opentdb.com/api.php?amount=5&category=17&difficulty=easy&type=multiple')
+    .then(response => response.json())
+    .then(json => {
+        questions = json.results;
+        showNextQuestion();
+    });
+}
+
+
+/**
+ * Check and respond to the user's chosen answer
+ * @param {Event} event 
+ */
+function processAnswer(event) {
+    let button = event.target;
+
+    if (button.innerText === currentQuestion.correct_answer) {
+        button.classList.add('green');
+        feedbackTxt.innerHTML = 'Correct! You now have XXX points!';
+        setTimeout(showNextQuestion, 2000);
+    } else {
+        button.classList.add('red');
+        feedbackTxt.innerHTML = 
+            `Wrong! That means it's game over for you! 
+            Your final score was XXX points! 
+            Click Play Game to try to beat your score!`;
+        // hide the game buttons
+        fiftyBtn.classList.add('hidden');
+        askBtn.classList.add('hidden');
+        phoneBtn.classList.add('hidden');
+        // show the Play Again button
+        playAgainBtn.classList.remove('hidden');
+    }
+}
+
+
+/**
+ * Reload the page to start a new game.
+ */
+function reloadPage() {
+    window.location.reload();
 }
 
 
@@ -66,23 +107,10 @@ function setMode(mode) {
 
 
 /**
- * Start the game
+ * Only show the instructions panel
  */
-function startGame() {
-    setMode('game');
-}
-
-
-/**
- * Load questions (and answers)
- */
-function loadQuestions() {
-    fetch('https://opentdb.com/api.php?amount=5&category=17&difficulty=easy&type=multiple')
-    .then(response => response.json())
-    .then(json => {
-        multiChoiceQuestions = json.results;
-        showNextQuestion();
-    });
+function showInstructions() {
+    setMode('instructions');
 }
 
 
@@ -93,13 +121,13 @@ function showNextQuestion() {
     let answers = [];
     
     // update screen with next question
-    multiChoiceQuestion = multiChoiceQuestions.pop();
-    questionTxt.innerHTML = multiChoiceQuestion.question;
+    currentQuestion = questions.pop();
+    questionTxt.innerHTML = currentQuestion.question;
     feedbackTxt.innerHTML = '&nbsp;';
     
     // update answer buttons with answers
-    answers.push(multiChoiceQuestion.correct_answer);
-    for (let incorrectAnswer of multiChoiceQuestion.incorrect_answers) {
+    answers.push(currentQuestion.correct_answer);
+    for (let incorrectAnswer of currentQuestion.incorrect_answers) {
         answers.push(incorrectAnswer);
     }
     answers.sort(); // sort to randomise
@@ -111,35 +139,8 @@ function showNextQuestion() {
 
 
 /**
- * Check and respond to the user's chosen answer
- * @param {Event} event 
+ * Start the game
  */
-function processAnswer(event) {
-    let button = event.target;
-
-    if (button.innerText === multiChoiceQuestion.correct_answer) {
-        button.classList.add('green');
-        feedbackTxt.innerHTML = 'Correct! You now have XXX points!';
-        setTimeout(showNextQuestion, 2000);
-    } else {
-        button.classList.add('red');
-        feedbackTxt.innerHTML = 
-            `Wrong! That means it's game over for you! 
-            Your final score was XXX points! 
-            Click Play Game to try to beat your score!`;
-        // hide the game buttons
-        fiftyBtn.classList.add('hidden');
-        askBtn.classList.add('hidden');
-        phoneBtn.classList.add('hidden');
-        // show the Play Again button
-        playAgainBtn.classList.remove('hidden');
-    }
-}
-
-
-/**
- * Reload the page to start a new game.
- */
-function reloadPage() {
-    window.location.reload();
+function startGame() {
+    setMode('game');
 }
