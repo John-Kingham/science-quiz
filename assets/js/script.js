@@ -1,81 +1,78 @@
 // Global variables for DOM elements
-const welcomeTxt = document.querySelector('#welcome-txt');
-const instructionsTxt = document.querySelector('#instructions-txt');
-const gameArea = document.querySelector('#game-area');
-const questionTxt = document.querySelector('#question-txt');
-const feedbackTxt = document.querySelector('#feedback-txt');
-const answerBtns = document.querySelector('#answer-btns');
-const playBtn = document.querySelector('#play-btn');
-const instructionsBtn = document.querySelector('#instructions-btn');
-const fiftyBtn = document.querySelector('#fifty-btn');
-const askBtn = document.querySelector('#ask-btn');
-const phoneBtn = document.querySelector('#phone-btn');
-const playAgainBtn = document.querySelector('#play-again');
+const welcomeTxt = document.querySelector("#welcome-txt");
+const instructionsTxt = document.querySelector("#instructions-txt");
+const gameArea = document.querySelector("#game-area");
+const questionTxt = document.querySelector("#question-txt");
+const feedbackTxt = document.querySelector("#feedback-txt");
+const answerBtns = document.querySelector("#answer-btns");
+const playBtn = document.querySelector("#play-btn");
+const instructionsBtn = document.querySelector("#instructions-btn");
+const fiftyBtn = document.querySelector("#fifty-btn");
+const askBtn = document.querySelector("#ask-btn");
+const phoneBtn = document.querySelector("#phone-btn");
+const playAgainBtn = document.querySelector("#play-again");
 
 let questions;
 let currentQuestion;
 let score = 0;
-let scores = [1000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000];
+let scores = [
+    1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
+];
 
 loadQuestions();
 addEventListeners();
-
 
 /**
  * Add event listeners to buttons
  */
 function addEventListeners() {
-    instructionsBtn.addEventListener('click', showInstructions);
-    playAgainBtn.addEventListener('click', reloadPage);
-    playBtn.addEventListener('click', startGame);
+    instructionsBtn.addEventListener("click", showInstructions);
+    playAgainBtn.addEventListener("click", reloadPage);
+    playBtn.addEventListener("click", startGame);
     for (const answerBtn of answerBtns.children) {
-        answerBtn.addEventListener('click', processAnswer);
+        answerBtn.addEventListener("click", respondToAnswer);
     }
 }
-
 
 /**
  * Load questions (and answers)
  */
 function loadQuestions() {
-    fetch('https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple')
-    .then(response => response.json())
-    .then(json => {
-        questions = json.results;
-        showNextQuestion();
-    });
+    fetch(
+        "https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple"
+    )
+        .then((response) => response.json())
+        .then((json) => {
+            questions = json.results;
+            showNextQuestion();
+        });
 }
-
 
 /**
- * Check and respond to the user's chosen answer
- * 
- * @param {Event} event 
+ * Respond to the user's answer
+ *
+ * @param {Event} event
  */
-function processAnswer(event) {
-    let button = event.target;
+function respondToAnswer(event) {
+    const button = event.target;
 
     if (button.innerText === currentQuestion.correct_answer) {
-        score = scores.shift();
-        button.classList.add('green');
-        feedbackTxt.innerHTML = 
-            `Correct! 
-            You now have ${score} points!`;
-        setTimeout(showNextQuestion, 2000);
+        score = scores.pop();
+        feedbackTxt.innerHTML = `<em>Correct! You now have ${score} points!</em>`;
+        button.classList.add("green");
+        if (questions.length) {
+            setTimeout(showNextQuestion, 2000);
+        } else {
+            feedbackTxt.innerHTML += `<em>&nbsp;That means you've answered every question correctly, so you are a true champion of science!</em>`;
+            displayMode("end");
+        }
     } else {
-        button.classList.add('red');
-        feedbackTxt.innerHTML = 
-            `Wrong! That means it's game over! 
-            Your final score was ${score} points!`;
-        // hide the game buttons
-        fiftyBtn.classList.add('hidden');
-        askBtn.classList.add('hidden');
-        phoneBtn.classList.add('hidden');
-        // show the Play Again button
-        playAgainBtn.classList.remove('hidden');
+        button.classList.add("red");
+        feedbackTxt.innerHTML = `<em>Wrong! The correct answer was: ${currentQuestion.correct_answer}.&nbsp;
+            That means it's game over and your final score was ${score} points!</em>`;
+        displayMode("end");
     }
 }
-
 
 /**
  * Reload the page to start a new game.
@@ -84,54 +81,59 @@ function reloadPage() {
     window.location.reload();
 }
 
-
 /**
  * Sets the game's display mode.
- * 
- * @param {String} mode - 'instructions' or 'game'
+ *
+ * @param {String} mode - 'instructions', 'game' or 'end'
  */
-function setMode(mode) {
+function displayMode(mode) {
     switch (mode) {
-        case 'instructions':
-            welcomeTxt.classList.add('hidden');
-            instructionsBtn.classList.add('hidden');
-            instructionsTxt.classList.remove('hidden');
-            gameArea.classList.add('hidden');
+        case "instructions":
+            welcomeTxt.classList.add("hidden");
+            instructionsBtn.classList.add("hidden");
+            instructionsTxt.classList.remove("hidden");
+            gameArea.classList.add("hidden");
             break;
-        case 'game':
+        case "game":
             // hide non-game content
-            welcomeTxt.classList.add('hidden');
-            instructionsTxt.classList.add('hidden');
-            playBtn.classList.add('hidden');
-            instructionsBtn.classList.add('hidden');
+            welcomeTxt.classList.add("hidden");
+            instructionsTxt.classList.add("hidden");
+            playBtn.classList.add("hidden");
+            instructionsBtn.classList.add("hidden");
             // show the game panel and buttons
-            gameArea.classList.remove('hidden');
-            fiftyBtn.classList.remove('hidden');
-            askBtn.classList.remove('hidden');
-            phoneBtn.classList.remove('hidden');
+            gameArea.classList.remove("hidden");
+            fiftyBtn.classList.remove("hidden");
+            askBtn.classList.remove("hidden");
+            phoneBtn.classList.remove("hidden");
+            break;
+        case "end":
+            // hide the game buttons
+            fiftyBtn.classList.add("hidden");
+            askBtn.classList.add("hidden");
+            phoneBtn.classList.add("hidden");
+            // show the Play Again button
+            playAgainBtn.classList.remove("hidden");
     }
 }
-
 
 /**
  * Only show the instructions panel
  */
 function showInstructions() {
-    setMode('instructions');
+    displayMode("instructions");
 }
-
 
 /**
  * Show the next question
  */
 function showNextQuestion() {
     let answers = [];
-    
+
     // update screen with next question
     currentQuestion = questions.pop();
     questionTxt.innerHTML = currentQuestion.question;
-    feedbackTxt.innerHTML = '&nbsp;';
-    
+    feedbackTxt.innerHTML = "&nbsp;";
+
     // update answer buttons with answers
     answers.push(currentQuestion.correct_answer);
     for (let incorrectAnswer of currentQuestion.incorrect_answers) {
@@ -140,14 +142,13 @@ function showNextQuestion() {
     answers.sort(); // sort to randomise
     for (i = 0; i < answers.length; i++) {
         answerBtns.children[i].innerText = answers[i];
-        answerBtns.children[i].classList.remove('green', 'red');
+        answerBtns.children[i].classList.remove("green", "red");
     }
 }
-
 
 /**
  * Start the game
  */
 function startGame() {
-    setMode('game');
+    displayMode("game");
 }
