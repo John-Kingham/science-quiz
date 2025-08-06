@@ -66,10 +66,9 @@ function setMode(mode) {
 
 
 /**
- * Show the game panel and start the game
+ * Start the game
  */
 function startGame() {
-    showNextQuestion();
     setMode('game');
 }
 
@@ -82,6 +81,7 @@ function loadQuestions() {
     .then(response => response.json())
     .then(json => {
         multiChoiceQuestions = json.results;
+        showNextQuestion();
     });
 }
 
