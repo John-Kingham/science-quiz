@@ -87,9 +87,10 @@ button {
     border: 0.25rem solid var(--contrast-color);
 }
 
-button:hover {
+button:active {
     box-shadow: 0 0 10px 0 var(--contrast-color);
 }
+
 
 .answer-btn {
     display: block;
@@ -112,6 +113,12 @@ footer {
 }
 
 /* Media queries */
+
+@media (hover: hover) {
+    button:hover {
+        box-shadow: 0 0 10px 0 var(--contrast-color);
+    }
+}
 
 @media screen and (min-width: 576px) {
     main {
