@@ -14,6 +14,8 @@ const playAgainBtn = document.querySelector('#play-again');
 
 let questions;
 let currentQuestion;
+let score = 0;
+let scores = [1000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000];
 
 loadQuestions();
 addEventListeners();
@@ -36,7 +38,7 @@ function addEventListeners() {
  * Load questions (and answers)
  */
 function loadQuestions() {
-    fetch('https://opentdb.com/api.php?amount=5&category=17&difficulty=easy&type=multiple')
+    fetch('https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple')
     .then(response => response.json())
     .then(json => {
         questions = json.results;
@@ -47,21 +49,24 @@ function loadQuestions() {
 
 /**
  * Check and respond to the user's chosen answer
+ * 
  * @param {Event} event 
  */
 function processAnswer(event) {
     let button = event.target;
 
     if (button.innerText === currentQuestion.correct_answer) {
+        score = scores.shift();
         button.classList.add('green');
-        feedbackTxt.innerHTML = 'Correct! You now have XXX points!';
+        feedbackTxt.innerHTML = 
+            `Correct! 
+            You now have ${score} points!`;
         setTimeout(showNextQuestion, 2000);
     } else {
         button.classList.add('red');
         feedbackTxt.innerHTML = 
-            `Wrong! That means it's game over for you! 
-            Your final score was XXX points! 
-            Click Play Game to try to beat your score!`;
+            `Wrong! That means it's game over! 
+            Your final score was ${score} points!`;
         // hide the game buttons
         fiftyBtn.classList.add('hidden');
         askBtn.classList.add('hidden');
@@ -82,6 +87,8 @@ function reloadPage() {
 
 /**
  * Sets the game's display mode.
+ * 
+ * @param {String} mode - 'instructions' or 'game'
  */
 function setMode(mode) {
     switch (mode) {
