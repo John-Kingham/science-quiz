@@ -17,7 +17,7 @@
 body {
     background-image: url(../images/ball-of-energy.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -47,13 +47,14 @@ header {
 
 main {
     width: 90%;
+    margin: auto;
 }
 
 #game-area, #welcome-txt, #instructions-txt {
     border: 0.5rem solid var(--primary-color);
     border-radius: 1rem;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
-    padding: 1rem;
+    padding: 2rem 1rem;
     font-family: "Noto Sans";
     background-color: var(--secondary-color);
     color: var(--text-color);
@@ -94,4 +95,24 @@ button {
 footer {
     margin-top: auto;
     margin-bottom: 1rem;
+}
+
+/* Media queries */
+
+@media screen and (min-width: 576px) {
+    main {
+        width: 66%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    main {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    main {
+        width: 33%;
+    }
 }
