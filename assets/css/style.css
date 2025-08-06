@@ -60,6 +60,10 @@ main {
     color: var(--text-color);
 }
 
+#instructions-txt li + li {
+    margin-top: 0.5rem;
+}
+
 #nav-btns, #help-btns {
     display: flex;
 }
