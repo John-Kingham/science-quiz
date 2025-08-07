@@ -96,6 +96,12 @@ button:active {
     width: 100%;
 }
 
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .green {
     background-color: var(--contrast-color);
 }

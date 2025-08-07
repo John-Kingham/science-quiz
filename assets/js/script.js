@@ -29,9 +29,18 @@ function addEventListeners() {
     instructionsBtn.addEventListener("click", showInstructions);
     playAgainBtn.addEventListener("click", reloadPage);
     playBtn.addEventListener("click", startGame);
+    fiftyBtn.addEventListener("click", fiftyFifty);
     for (const answerBtn of answerBtns.children) {
         answerBtn.addEventListener("click", respondToAnswer);
     }
+}
+
+/**
+ * Use the 50/50 lifeline
+ */
+function fiftyFifty() {
+    answerBtnMode("50/50");
+    fiftyBtn.classList.add('disabled');
 }
 
 /**
@@ -80,7 +89,9 @@ function respondToAnswer(event) {
         }
     } else {
         button.classList.add("red");
-        feedbackTxt.innerHTML = `<em>Wrong! The correct answer was: ${currentQuestion.correct_answer}.&nbsp;
+        feedbackTxt.innerHTML = `<em>Wrong! The correct answer was: ${
+            currentQuestion.correct_answer
+        }.&nbsp;
             That means it's game over and your final score was ${score.toLocaleString()} points!</em>`;
         displayMode("end");
     }
@@ -96,7 +107,7 @@ function reloadPage() {
 /**
  * Sets the game's display mode.
  *
- * @param {String} mode - 'instructions', 'game' or 'end'
+ * @param {String} mode - 'instructions', 'game', 'end'
  */
 function displayMode(mode) {
     switch (mode) {
@@ -129,6 +140,34 @@ function displayMode(mode) {
 }
 
 /**
+ * Sets the display mode of the answer buttons
+ *
+ * @param {String} mode - 'normal', '50/50'
+ */
+function answerBtnMode(mode) {
+    switch (mode) {
+        case "normal":
+            for (const answerBtn of answerBtns.children) {
+                answerBtn.classList.remove("disabled");
+            }
+            break;
+        case "50/50":
+            // disable all buttons except the correct answer button
+            for (const answerBtn of answerBtns.children) {
+                if (answerBtn.innerText !== currentQuestion.correct_answer) {
+                    answerBtn.classList.add("disabled");
+                }
+            }
+            // re-enable one incorrect answer button
+            let disabledBtns = Array.from(
+                answerBtns.querySelectorAll(".disabled")
+            );
+            randomIndex = Math.floor(Math.random() * disabledBtns.length);
+            disabledBtns[randomIndex].classList.remove("disabled");
+    }
+}
+
+/**
  * Only show the instructions panel
  */
 function showInstructions() {
@@ -156,6 +195,7 @@ function showNextQuestion() {
         answerBtns.children[i].innerHTML = answers[i];
         answerBtns.children[i].classList.remove("green", "red");
     }
+    answerBtnMode("normal");
 }
 
 /**
