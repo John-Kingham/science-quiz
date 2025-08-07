@@ -1,4 +1,5 @@
 // Global variables for DOM elements
+const root = document.documentElement;
 const welcomeTxt = document.querySelector("#welcome-txt");
 const instructionsTxt = document.querySelector("#instructions-txt");
 const gameArea = document.querySelector("#game-area");
@@ -11,13 +12,19 @@ const fiftyBtn = document.querySelector("#fifty-btn");
 const askBtn = document.querySelector("#ask-btn");
 const phoneBtn = document.querySelector("#phone-btn");
 const playAgainBtn = document.querySelector("#play-again");
+const secondaryColor = getComputedStyle(root)
+    .getPropertyValue("--secondary-color")
+    .trim();
+const contrastColor = getComputedStyle(root)
+    .getPropertyValue("--contrast-color")
+    .trim();
+const scores = [
+    1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
+];
 
 let questions;
 let currentQuestion;
 let score = 0;
-let scores = [
-    1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
-];
 
 loadQuestions();
 addEventListeners();
@@ -40,6 +47,7 @@ function addEventListeners() {
  * Use the Ask The Internet lifeline
  */
 function askTheInternet() {
+    feedbackTxt.innerHTML = "The green bars represent votes from the Internet. But beware, the Internet is not always right!";
     answerBtnMode("ask");
     askBtn.classList.add("disabled");
 }
@@ -87,6 +95,7 @@ function loadQuestions() {
 function respondToAnswer(event) {
     const button = event.target;
 
+    answerBtnMode("normal");
     if (button.innerText === currentQuestion.correct_answer) {
         score = scores.pop();
         feedbackTxt.innerHTML = `<em>Correct! You now have ${score.toLocaleString()} points!</em>`;
@@ -159,6 +168,7 @@ function answerBtnMode(mode) {
         case "normal":
             for (const answerBtn of answerBtns.children) {
                 answerBtn.classList.remove("disabled");
+                answerBtn.style.background = "";
             }
             break;
         case "50/50":
@@ -176,6 +186,23 @@ function answerBtnMode(mode) {
             disabledBtns[randomIndex].classList.remove("disabled");
             break;
         case "ask":
+            // calculate how many votes the correct answer got
+            let remainingVotes = 100;
+            let vote = Math.floor(Math.random() * remainingVotes);
+            remainingVotes -= vote;
+            for (const answerBtn of answerBtns.children) {
+                if (answerBtn.innerText === currentQuestion.correct_answer) {
+                    answerBtn.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
+                }
+            }
+            // calculate how many votes the incorrect answers got
+            for (const answerBtn of answerBtns.children) {
+                if (answerBtn.innerText !== currentQuestion.correct_answer) {
+                    vote = Math.floor(Math.random() * remainingVotes);
+                    remainingVotes -= vote;
+                    answerBtn.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
+                }
+            }
             break;
     }
 }
