@@ -30,17 +30,27 @@ function addEventListeners() {
     playAgainBtn.addEventListener("click", reloadPage);
     playBtn.addEventListener("click", startGame);
     fiftyBtn.addEventListener("click", fiftyFifty);
+    askBtn.addEventListener("click", askTheInternet);
     for (const answerBtn of answerBtns.children) {
         answerBtn.addEventListener("click", respondToAnswer);
     }
 }
 
 /**
+ * Use the Ask The Internet lifeline
+ */
+function askTheInternet() {
+    answerBtnMode("ask");
+    askBtn.classList.add("disabled");
+}
+
+/**
  * Use the 50/50 lifeline
  */
 function fiftyFifty() {
+    feedbackTxt.innerHTML = "Choose from the remaining two answers...";
     answerBtnMode("50/50");
-    fiftyBtn.classList.add('disabled');
+    fiftyBtn.classList.add("disabled");
 }
 
 /**
@@ -142,7 +152,7 @@ function displayMode(mode) {
 /**
  * Sets the display mode of the answer buttons
  *
- * @param {String} mode - 'normal', '50/50'
+ * @param {String} mode - 'normal', '50/50', 'ask'
  */
 function answerBtnMode(mode) {
     switch (mode) {
@@ -164,6 +174,9 @@ function answerBtnMode(mode) {
             );
             randomIndex = Math.floor(Math.random() * disabledBtns.length);
             disabledBtns[randomIndex].classList.remove("disabled");
+            break;
+        case "ask":
+            break;
     }
 }
 
