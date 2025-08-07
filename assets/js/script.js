@@ -41,10 +41,22 @@ function loadQuestions() {
     fetch(
         "https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple"
     )
-        .then((response) => response.json())
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error(`Error with status: ${response.status}`);
+            }
+        })
         .then((json) => {
             questions = json.results;
             showNextQuestion();
+        })
+        .catch((error) => {
+            console.log(error);
+            alert(
+                "Error! Failed to load questions. Please refresh the page and try again."
+            );
         });
 }
 
