@@ -70,7 +70,7 @@ function respondToAnswer(event) {
 
     if (button.innerText === currentQuestion.correct_answer) {
         score = scores.pop();
-        feedbackTxt.innerHTML = `<em>Correct! You now have ${score} points!</em>`;
+        feedbackTxt.innerHTML = `<em>Correct! You now have ${score.toLocaleString()} points!</em>`;
         button.classList.add("green");
         if (questions.length) {
             setTimeout(showNextQuestion, 2000);
@@ -81,7 +81,7 @@ function respondToAnswer(event) {
     } else {
         button.classList.add("red");
         feedbackTxt.innerHTML = `<em>Wrong! The correct answer was: ${currentQuestion.correct_answer}.&nbsp;
-            That means it's game over and your final score was ${score} points!</em>`;
+            That means it's game over and your final score was ${score.toLocaleString()} points!</em>`;
         displayMode("end");
     }
 }
