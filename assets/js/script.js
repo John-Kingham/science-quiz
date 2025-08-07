@@ -153,7 +153,7 @@ function showNextQuestion() {
     }
     answers.sort(); // sort to randomise
     for (i = 0; i < answers.length; i++) {
-        answerBtns.children[i].innerText = answers[i];
+        answerBtns.children[i].innerHTML = answers[i];
         answerBtns.children[i].classList.remove("green", "red");
     }
 }
