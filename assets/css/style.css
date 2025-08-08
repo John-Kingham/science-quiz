@@ -51,7 +51,8 @@ main {
 
 #game-area,
 #welcome-txt,
-#instructions-txt {
+#instructions-txt,
+#error-404 {
     border: 0.5rem solid var(--primary-color);
     border-radius: 1rem;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
@@ -112,7 +113,6 @@ button:active {
 }
 
 .blue-border {
-    border-width: 0.5rem;
     border-color: var(--secondary-contrast-color);
 }
 
@@ -137,8 +137,11 @@ footer {
     flex-wrap: wrap;
 }
 
-#footer-nav a {
+a {
     color: var(--text-color);
+}
+
+#footer-nav a {
     padding: 0.5rem;
 }
 

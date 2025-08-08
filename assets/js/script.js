@@ -68,7 +68,7 @@ function fiftyFifty() {
  */
 function phoneAScientist() {
     feedbackTxtEl.innerHTML =
-        "The scientist's answer has been highlighted, but remember, scientists are not always right!";
+        "The scientist's answer is in blue, but remember, scientists are not always right!";
     phoneBtnEl.classList.add("disabled");
     answerBtnMode("phone");
 }
@@ -283,15 +283,15 @@ function answerIsCorrect(button) {
  */
 function randomIncorrectAnswer(isActive) {
     const answerBtnEls = Array.from(answerBtnsEl.children);
-    const incorrect = (btn) => !answerIsCorrect(btn);
-    const incorrectAndActive = (btn) => {
+    const isIncorrect = (btn) => !answerIsCorrect(btn);
+    const isIncorrectAndActive = (btn) => {
         return !answerIsCorrect(btn) && !btn.classList.contains('disabled');
     };
     let incorrectBtnEls;
     if (isActive) {
-        incorrectBtnEls = answerBtnEls.filter(incorrectAndActive);
+        incorrectBtnEls = answerBtnEls.filter(isIncorrectAndActive);
     } else {
-        incorrectBtnEls = answerBtnEls.filter(incorrect);
+        incorrectBtnEls = answerBtnEls.filter(isIncorrect);
     }
     const randomIndex = Math.floor(Math.random() * incorrectBtnEls.length);
     return incorrectBtnEls[randomIndex];
