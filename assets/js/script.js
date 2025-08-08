@@ -30,7 +30,7 @@ loadQuestions();
 addEventListeners();
 
 /**
- * Add event listeners to buttons
+ * Add event listeners to buttons.
  */
 function addEventListeners() {
     instructionsBtnEl.addEventListener("click", showInstructions);
@@ -38,32 +38,43 @@ function addEventListeners() {
     playBtnEl.addEventListener("click", startGame);
     fiftyBtnEl.addEventListener("click", fiftyFifty);
     askBtnEl.addEventListener("click", askTheInternet);
+    phoneBtnEl.addEventListener("click", phoneAScientist);
     for (const answerBtnEl of answerBtnsEl.children) {
         answerBtnEl.addEventListener("click", respondToAnswer);
     }
 }
 
 /**
- * Use the Ask The Internet lifeline
+ * Use the Ask The Internet lifeline.
  */
 function askTheInternet() {
     feedbackTxtEl.innerHTML =
         "The green bars represent votes from the Internet. But beware, the Internet is not always right!";
-    answerBtnMode("ask");
     askBtnEl.classList.add("disabled");
+    answerBtnMode("ask");
 }
 
 /**
- * Use the 50/50 lifeline
+ * Use the 50/50 lifeline.
  */
 function fiftyFifty() {
     feedbackTxtEl.innerHTML = "Choose from the remaining two answers...";
-    answerBtnMode("50/50");
     fiftyBtnEl.classList.add("disabled");
+    answerBtnMode("50/50");
 }
 
 /**
- * Load questions (and answers)
+ * Use the Phone a Scientist lifeline.
+ */
+function phoneAScientist() {
+    feedbackTxtEl.innerHTML =
+        "The scientist's answer has been highlighted, but remember, scientists are not always right!";
+    phoneBtnEl.classList.add("disabled");
+    answerBtnMode("phone");
+}
+
+/**
+ * Load the multi-choice questions and answers.
  */
 function loadQuestions() {
     fetch(
@@ -89,7 +100,7 @@ function loadQuestions() {
 }
 
 /**
- * Respond to the user's answer
+ * Respond to the user's answer.
  *
  * @param {Event} event
  */
@@ -125,7 +136,7 @@ function reloadPage() {
 }
 
 /**
- * Sets the game's display mode.
+ * Set the game's display mode.
  *
  * @param {String} mode - 'instructions', 'game', 'end'
  */
@@ -160,7 +171,7 @@ function displayMode(mode) {
 }
 
 /**
- * Sets the display mode of the answer buttons
+ * Set the display mode of the answer buttons.
  *
  * @param {String} mode - 'normal', '50/50', 'ask'
  */
@@ -168,7 +179,7 @@ function answerBtnMode(mode) {
     switch (mode) {
         case "normal":
             for (const answerBtn of answerBtnsEl.children) {
-                answerBtn.classList.remove("disabled");
+                answerBtn.classList.remove("disabled", 'blue-border');
                 answerBtn.style.background = "";
             }
             break;
@@ -180,11 +191,7 @@ function answerBtnMode(mode) {
                 }
             }
             // re-enable one incorrect answer button
-            let disabledBtnEls = Array.from(
-                answerBtnsEl.querySelectorAll(".disabled")
-            );
-            randomIndex = Math.floor(Math.random() * disabledBtnEls.length);
-            disabledBtnEls[randomIndex].classList.remove("disabled");
+            randomIncorrectAnswer(false).classList.remove("disabled");
             break;
         case "ask":
             // calculate how many votes the correct answer got
@@ -205,18 +212,30 @@ function answerBtnMode(mode) {
                 }
             }
             break;
+        case "phone":
+            // the scientist is only right 75% of the time
+            if (Math.random() > 0.25) {
+                for (const answerBtnEl of answerBtnsEl.children) {
+                    if (answerIsCorrect(answerBtnEl)) {
+                        answerBtnEl.classList.add("blue-border");
+                    }
+                }
+            } else {
+                randomIncorrectAnswer(true).classList.add("blue-border");
+            }
+            break;
     }
 }
 
 /**
- * Only show the instructions panel
+ * Only show the instructions panel.
  */
 function showInstructions() {
     displayMode("instructions");
 }
 
 /**
- * Show the next question
+ * Show the next question.
  */
 function showNextQuestion() {
     let answers = [];
@@ -240,18 +259,40 @@ function showNextQuestion() {
 }
 
 /**
- * Start the game
+ * Start the game.
  */
 function startGame() {
     displayMode("game");
 }
 
 /**
- * Checks if the user's answer is correct
+ * Check if the user's answer is correct.
  *
- * @param {HTMLElement} button The answer button clicked by the user
+ * @param {HTMLButtonElement} button The answer button clicked by the user
  * @return {boolean} 'true' if the answer is correct, otherwise 'false'
  */
 function answerIsCorrect(button) {
     return button.innerHTML === currentQuestion.correct_answer;
+}
+
+/**
+ * Get a random incorrect answer button.
+ *
+ * @param {boolean} isActive Whether the button must be active (not disabled) 
+ * @return {HTMLButtonElement} A random incorrect answer button
+ */
+function randomIncorrectAnswer(isActive) {
+    const answerBtnEls = Array.from(answerBtnsEl.children);
+    const incorrect = (btn) => !answerIsCorrect(btn);
+    const incorrectAndActive = (btn) => {
+        return !answerIsCorrect(btn) && !btn.classList.contains('disabled');
+    };
+    let incorrectBtnEls;
+    if (isActive) {
+        incorrectBtnEls = answerBtnEls.filter(incorrectAndActive);
+    } else {
+        incorrectBtnEls = answerBtnEls.filter(incorrect);
+    }
+    const randomIndex = Math.floor(Math.random() * incorrectBtnEls.length);
+    return incorrectBtnEls[randomIndex];
 }

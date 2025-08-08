@@ -11,6 +11,7 @@
     --text-color: #fff;
     --shadow-color: #333;
     --contrast-color: #00c8a1;
+    --secondary-contrast-color: #0080f9;
     --bold: 700;
 }
 
@@ -108,6 +109,11 @@ button:active {
 
 .red {
     background-color: var(--primary-color);
+}
+
+.blue-border {
+    border-width: 0.5rem;
+    border-color: var(--secondary-contrast-color);
 }
 
 /* Footer styles */
