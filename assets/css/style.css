@@ -6,12 +6,13 @@
 :root {
     --heading-font: "Audiowide", serif;
     --body-font: "Noto Sans", sans-serif;
-    --primary-color: #d45179;
+    --primary-color: #AF538C;
     --secondary-color: #3a5172;
     --text-color: #fff;
     --shadow-color: #333;
-    --contrast-color: #00c8a1;
-    --secondary-contrast-color: #0080f9;
+    --green: #00c8a1;
+    --blue: #0080f9;
+    --red: #d45179;
     --bold: 700;
 }
 
@@ -86,11 +87,11 @@ button {
     font-size: 1rem;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
     border-radius: 1rem;
-    border: 0.25rem solid var(--contrast-color);
+    border: 0.25rem solid var(--green);
 }
 
 button:active {
-    box-shadow: 0 0 10px 0 var(--contrast-color);
+    box-shadow: 0 0 10px 0 var(--green);
 }
 
 .answer-btn {
@@ -105,15 +106,15 @@ button:active {
 }
 
 .green {
-    background-color: var(--contrast-color);
+    background-color: var(--green);
 }
 
 .red {
-    background-color: var(--primary-color);
+    background-color: var(--red);
 }
 
 .blue-border {
-    border-color: var(--secondary-contrast-color);
+    border-color: var(--blue);
 }
 
 /* Footer styles */
@@ -149,7 +150,7 @@ a {
 
 @media (hover: hover) {
     button:hover {
-        box-shadow: 0 0 10px 0 var(--contrast-color);
+        box-shadow: 0 0 10px 0 var(--green);
     }
 }
 
