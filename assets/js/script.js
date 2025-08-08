@@ -15,8 +15,8 @@ const playAgainBtnEl = document.querySelector("#play-again");
 const secondaryColor = getComputedStyle(rootEl)
     .getPropertyValue("--secondary-color")
     .trim();
-const contrastColor = getComputedStyle(rootEl)
-    .getPropertyValue("--contrast-color")
+const greenColor = getComputedStyle(rootEl)
+    .getPropertyValue("--green")
     .trim();
 const scores = [
     1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
@@ -200,7 +200,7 @@ function answerBtnMode(mode) {
             remainingVotes -= vote;
             for (const answerBtnEl of answerBtnsEl.children) {
                 if (answerIsCorrect(answerBtnEl)) {
-                    answerBtnEl.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
+                    answerBtnEl.style.background = `linear-gradient(to right, ${greenColor} ${vote}%, ${secondaryColor} ${vote}%`;
                 }
             }
             // calculate how many votes the incorrect answers got
@@ -208,7 +208,7 @@ function answerBtnMode(mode) {
                 if (!answerIsCorrect(answerBtnEl)) {
                     vote = Math.floor(Math.random() * remainingVotes);
                     remainingVotes -= vote;
-                    answerBtnEl.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
+                    answerBtnEl.style.background = `linear-gradient(to right, ${greenColor} ${vote}%, ${secondaryColor} ${vote}%`;
                 }
             }
             break;
