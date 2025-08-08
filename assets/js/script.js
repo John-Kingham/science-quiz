@@ -1,21 +1,21 @@
 // Global variables for DOM elements
-const root = document.documentElement;
-const welcomeTxt = document.querySelector("#welcome-txt");
-const instructionsTxt = document.querySelector("#instructions-txt");
-const gameArea = document.querySelector("#game-area");
-const questionTxt = document.querySelector("#question-txt");
-const feedbackTxt = document.querySelector("#feedback-txt");
-const answerBtns = document.querySelector("#answer-btns");
-const playBtn = document.querySelector("#play-btn");
-const instructionsBtn = document.querySelector("#instructions-btn");
-const fiftyBtn = document.querySelector("#fifty-btn");
-const askBtn = document.querySelector("#ask-btn");
-const phoneBtn = document.querySelector("#phone-btn");
-const playAgainBtn = document.querySelector("#play-again");
-const secondaryColor = getComputedStyle(root)
+const rootEl = document.documentElement;
+const welcomeTxtEl = document.querySelector("#welcome-txt");
+const instructionsTxtEl = document.querySelector("#instructions-txt");
+const gameAreaEl = document.querySelector("#game-area");
+const questionTxtEl = document.querySelector("#question-txt");
+const feedbackTxtEl = document.querySelector("#feedback-txt");
+const answerBtnsEl = document.querySelector("#answer-btns");
+const playBtnEl = document.querySelector("#play-btn");
+const instructionsBtnEl = document.querySelector("#instructions-btn");
+const fiftyBtnEl = document.querySelector("#fifty-btn");
+const askBtnEl = document.querySelector("#ask-btn");
+const phoneBtnEl = document.querySelector("#phone-btn");
+const playAgainBtnEl = document.querySelector("#play-again");
+const secondaryColor = getComputedStyle(rootEl)
     .getPropertyValue("--secondary-color")
     .trim();
-const contrastColor = getComputedStyle(root)
+const contrastColor = getComputedStyle(rootEl)
     .getPropertyValue("--contrast-color")
     .trim();
 const scores = [
@@ -33,12 +33,12 @@ addEventListeners();
  * Add event listeners to buttons
  */
 function addEventListeners() {
-    instructionsBtn.addEventListener("click", showInstructions);
-    playAgainBtn.addEventListener("click", reloadPage);
-    playBtn.addEventListener("click", startGame);
-    fiftyBtn.addEventListener("click", fiftyFifty);
-    askBtn.addEventListener("click", askTheInternet);
-    for (const answerBtn of answerBtns.children) {
+    instructionsBtnEl.addEventListener("click", showInstructions);
+    playAgainBtnEl.addEventListener("click", reloadPage);
+    playBtnEl.addEventListener("click", startGame);
+    fiftyBtnEl.addEventListener("click", fiftyFifty);
+    askBtnEl.addEventListener("click", askTheInternet);
+    for (const answerBtn of answerBtnsEl.children) {
         answerBtn.addEventListener("click", respondToAnswer);
     }
 }
@@ -47,18 +47,18 @@ function addEventListeners() {
  * Use the Ask The Internet lifeline
  */
 function askTheInternet() {
-    feedbackTxt.innerHTML = "The green bars represent votes from the Internet. But beware, the Internet is not always right!";
+    feedbackTxtEl.innerHTML = "The green bars represent votes from the Internet. But beware, the Internet is not always right!";
     answerBtnMode("ask");
-    askBtn.classList.add("disabled");
+    askBtnEl.classList.add("disabled");
 }
 
 /**
  * Use the 50/50 lifeline
  */
 function fiftyFifty() {
-    feedbackTxt.innerHTML = "Choose from the remaining two answers...";
+    feedbackTxtEl.innerHTML = "Choose from the remaining two answers...";
     answerBtnMode("50/50");
-    fiftyBtn.classList.add("disabled");
+    fiftyBtnEl.classList.add("disabled");
 }
 
 /**
@@ -98,17 +98,17 @@ function respondToAnswer(event) {
     answerBtnMode("normal");
     if (button.innerText === currentQuestion.correct_answer) {
         score = scores.pop();
-        feedbackTxt.innerHTML = `<em>Correct! You now have ${score.toLocaleString()} points!</em>`;
+        feedbackTxtEl.innerHTML = `<em>Correct! You now have ${score.toLocaleString()} points!</em>`;
         button.classList.add("green");
         if (questions.length) {
             setTimeout(showNextQuestion, 2000);
         } else {
-            feedbackTxt.innerHTML += `<em>&nbsp;That means you've answered every question correctly, so you are a true champion of science!</em>`;
+            feedbackTxtEl.innerHTML += `<em>&nbsp;That means you've answered every question correctly, so you are a true champion of science!</em>`;
             displayMode("end");
         }
     } else {
         button.classList.add("red");
-        feedbackTxt.innerHTML = `<em>Wrong! The correct answer was: ${
+        feedbackTxtEl.innerHTML = `<em>Wrong! The correct answer was: ${
             currentQuestion.correct_answer
         }.&nbsp;
             That means it's game over and your final score was ${score.toLocaleString()} points!</em>`;
@@ -131,30 +131,30 @@ function reloadPage() {
 function displayMode(mode) {
     switch (mode) {
         case "instructions":
-            welcomeTxt.classList.add("hidden");
-            instructionsBtn.classList.add("hidden");
-            instructionsTxt.classList.remove("hidden");
-            gameArea.classList.add("hidden");
+            welcomeTxtEl.classList.add("hidden");
+            instructionsBtnEl.classList.add("hidden");
+            instructionsTxtEl.classList.remove("hidden");
+            gameAreaEl.classList.add("hidden");
             break;
         case "game":
             // hide non-game content
-            welcomeTxt.classList.add("hidden");
-            instructionsTxt.classList.add("hidden");
-            playBtn.classList.add("hidden");
-            instructionsBtn.classList.add("hidden");
+            welcomeTxtEl.classList.add("hidden");
+            instructionsTxtEl.classList.add("hidden");
+            playBtnEl.classList.add("hidden");
+            instructionsBtnEl.classList.add("hidden");
             // show the game panel and buttons
-            gameArea.classList.remove("hidden");
-            fiftyBtn.classList.remove("hidden");
-            askBtn.classList.remove("hidden");
-            phoneBtn.classList.remove("hidden");
+            gameAreaEl.classList.remove("hidden");
+            fiftyBtnEl.classList.remove("hidden");
+            askBtnEl.classList.remove("hidden");
+            phoneBtnEl.classList.remove("hidden");
             break;
         case "end":
             // hide the game buttons
-            fiftyBtn.classList.add("hidden");
-            askBtn.classList.add("hidden");
-            phoneBtn.classList.add("hidden");
+            fiftyBtnEl.classList.add("hidden");
+            askBtnEl.classList.add("hidden");
+            phoneBtnEl.classList.add("hidden");
             // show the Play Again button
-            playAgainBtn.classList.remove("hidden");
+            playAgainBtnEl.classList.remove("hidden");
     }
 }
 
@@ -166,21 +166,21 @@ function displayMode(mode) {
 function answerBtnMode(mode) {
     switch (mode) {
         case "normal":
-            for (const answerBtn of answerBtns.children) {
+            for (const answerBtn of answerBtnsEl.children) {
                 answerBtn.classList.remove("disabled");
                 answerBtn.style.background = "";
             }
             break;
         case "50/50":
             // disable all buttons except the correct answer button
-            for (const answerBtn of answerBtns.children) {
+            for (const answerBtn of answerBtnsEl.children) {
                 if (answerBtn.innerText !== currentQuestion.correct_answer) {
                     answerBtn.classList.add("disabled");
                 }
             }
             // re-enable one incorrect answer button
             let disabledBtns = Array.from(
-                answerBtns.querySelectorAll(".disabled")
+                answerBtnsEl.querySelectorAll(".disabled")
             );
             randomIndex = Math.floor(Math.random() * disabledBtns.length);
             disabledBtns[randomIndex].classList.remove("disabled");
@@ -190,13 +190,13 @@ function answerBtnMode(mode) {
             let remainingVotes = 100;
             let vote = Math.floor(Math.random() * remainingVotes);
             remainingVotes -= vote;
-            for (const answerBtn of answerBtns.children) {
+            for (const answerBtn of answerBtnsEl.children) {
                 if (answerBtn.innerText === currentQuestion.correct_answer) {
                     answerBtn.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
                 }
             }
             // calculate how many votes the incorrect answers got
-            for (const answerBtn of answerBtns.children) {
+            for (const answerBtn of answerBtnsEl.children) {
                 if (answerBtn.innerText !== currentQuestion.correct_answer) {
                     vote = Math.floor(Math.random() * remainingVotes);
                     remainingVotes -= vote;
@@ -222,8 +222,8 @@ function showNextQuestion() {
 
     // update screen with next question
     currentQuestion = questions.pop();
-    questionTxt.innerHTML = currentQuestion.question;
-    feedbackTxt.innerHTML = "&nbsp;";
+    questionTxtEl.innerHTML = currentQuestion.question;
+    feedbackTxtEl.innerHTML = "&nbsp;";
 
     // update answer buttons with answers
     answers.push(currentQuestion.correct_answer);
@@ -232,8 +232,8 @@ function showNextQuestion() {
     }
     answers.sort(); // sort to randomise
     for (i = 0; i < answers.length; i++) {
-        answerBtns.children[i].innerHTML = answers[i];
-        answerBtns.children[i].classList.remove("green", "red");
+        answerBtnsEl.children[i].innerHTML = answers[i];
+        answerBtnsEl.children[i].classList.remove("green", "red");
     }
     answerBtnMode("normal");
 }
