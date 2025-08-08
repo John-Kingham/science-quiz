@@ -39,7 +39,6 @@ header {
     color: var(--text-color);
     text-align: center;
     font-family: var(--heading-font);
-    text-shadow: 3px 3px 3px var(--shadow-color);
     box-shadow: 0 2px 2px 0 var(--shadow-color);
 }
 
@@ -127,7 +126,6 @@ footer {
     background-color: var(--primary-color);
     color: var(--text-color);
     text-align: center;
-    text-shadow: 3px 3px 3px var(--shadow-color);
     font-family: var(--heading-font);
     box-shadow: 0 -2px 2px 0 var(--shadow-color);
 }
