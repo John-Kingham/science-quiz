@@ -38,8 +38,8 @@ function addEventListeners() {
     playBtnEl.addEventListener("click", startGame);
     fiftyBtnEl.addEventListener("click", fiftyFifty);
     askBtnEl.addEventListener("click", askTheInternet);
-    for (const answerBtn of answerBtnsEl.children) {
-        answerBtn.addEventListener("click", respondToAnswer);
+    for (const answerBtnEl of answerBtnsEl.children) {
+        answerBtnEl.addEventListener("click", respondToAnswer);
     }
 }
 
@@ -47,7 +47,8 @@ function addEventListeners() {
  * Use the Ask The Internet lifeline
  */
 function askTheInternet() {
-    feedbackTxtEl.innerHTML = "The green bars represent votes from the Internet. But beware, the Internet is not always right!";
+    feedbackTxtEl.innerHTML =
+        "The green bars represent votes from the Internet. But beware, the Internet is not always right!";
     answerBtnMode("ask");
     askBtnEl.classList.add("disabled");
 }
@@ -66,7 +67,7 @@ function fiftyFifty() {
  */
 function loadQuestions() {
     fetch(
-        "https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple"
     )
         .then((response) => {
             if (response.ok) {
@@ -93,13 +94,13 @@ function loadQuestions() {
  * @param {Event} event
  */
 function respondToAnswer(event) {
-    const button = event.target;
+    const answerBtnEl = event.target;
 
     answerBtnMode("normal");
-    if (button.innerText === currentQuestion.correct_answer) {
+    if (answerIsCorrect(answerBtnEl)) {
         score = scores.pop();
         feedbackTxtEl.innerHTML = `<em>Correct! You now have ${score.toLocaleString()} points!</em>`;
-        button.classList.add("green");
+        answerBtnEl.classList.add("green");
         if (questions.length) {
             setTimeout(showNextQuestion, 2000);
         } else {
@@ -107,7 +108,7 @@ function respondToAnswer(event) {
             displayMode("end");
         }
     } else {
-        button.classList.add("red");
+        answerBtnEl.classList.add("red");
         feedbackTxtEl.innerHTML = `<em>Wrong! The correct answer was: ${
             currentQuestion.correct_answer
         }.&nbsp;
@@ -173,34 +174,34 @@ function answerBtnMode(mode) {
             break;
         case "50/50":
             // disable all buttons except the correct answer button
-            for (const answerBtn of answerBtnsEl.children) {
-                if (answerBtn.innerText !== currentQuestion.correct_answer) {
-                    answerBtn.classList.add("disabled");
+            for (const answerBtnEl of answerBtnsEl.children) {
+                if (!answerIsCorrect(answerBtnEl)) {
+                    answerBtnEl.classList.add("disabled");
                 }
             }
             // re-enable one incorrect answer button
-            let disabledBtns = Array.from(
+            let disabledBtnEls = Array.from(
                 answerBtnsEl.querySelectorAll(".disabled")
             );
-            randomIndex = Math.floor(Math.random() * disabledBtns.length);
-            disabledBtns[randomIndex].classList.remove("disabled");
+            randomIndex = Math.floor(Math.random() * disabledBtnEls.length);
+            disabledBtnEls[randomIndex].classList.remove("disabled");
             break;
         case "ask":
             // calculate how many votes the correct answer got
             let remainingVotes = 100;
             let vote = Math.floor(Math.random() * remainingVotes);
             remainingVotes -= vote;
-            for (const answerBtn of answerBtnsEl.children) {
-                if (answerBtn.innerText === currentQuestion.correct_answer) {
-                    answerBtn.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
+            for (const answerBtnEl of answerBtnsEl.children) {
+                if (answerIsCorrect(answerBtnEl)) {
+                    answerBtnEl.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
                 }
             }
             // calculate how many votes the incorrect answers got
-            for (const answerBtn of answerBtnsEl.children) {
-                if (answerBtn.innerText !== currentQuestion.correct_answer) {
+            for (const answerBtnEl of answerBtnsEl.children) {
+                if (!answerIsCorrect(answerBtnEl)) {
                     vote = Math.floor(Math.random() * remainingVotes);
                     remainingVotes -= vote;
-                    answerBtn.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
+                    answerBtnEl.style.background = `linear-gradient(to right, ${contrastColor} ${vote}%, ${secondaryColor} ${vote}%`;
                 }
             }
             break;
@@ -243,4 +244,14 @@ function showNextQuestion() {
  */
 function startGame() {
     displayMode("game");
+}
+
+/**
+ * Checks if the user's answer is correct
+ *
+ * @param {HTMLElement} button The answer button clicked by the user
+ * @return {boolean} 'true' if the answer is correct, otherwise 'false'
+ */
+function answerIsCorrect(button) {
+    return button.innerHTML === currentQuestion.correct_answer;
 }
