@@ -21,7 +21,7 @@ const greenColor = getComputedStyle(rootEl).getPropertyValue("--green").trim();
 const scores = [
     1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
 ];
-
+const answerBtnElsArr = Array.from(answerBtnsEl.children);
 let questions;
 let currentQuestion;
 let score = 0;
@@ -109,7 +109,7 @@ function respondToAnswer(event) {
     const answerBtnEl = event.target;
 
     answerBtnMode("normal");
-    if (answerIsCorrect(answerBtnEl)) {
+    if (isCorrect(answerBtnEl)) {
         score = scores.pop();
         feedbackTxtEl.innerHTML = `<em>Correct! You now have ${score.toLocaleString()} points!</em>`;
         answerBtnEl.classList.add("green");
@@ -179,16 +179,16 @@ function displayMode(mode) {
 function answerBtnMode(mode) {
     switch (mode) {
         case "normal":
-            for (const answerBtn of answerBtnsEl.children) {
-                answerBtn.classList.remove("disabled", "blue-border");
-                answerBtn.style.background = "";
+            for (const btn of answerBtnsEl.children) {
+                btn.classList.remove("disabled", "blue-border");
+                btn.style.background = "";
             }
             break;
         case "50/50":
-            // disable all buttons except the correct answer button
-            for (const answerBtnEl of answerBtnsEl.children) {
-                if (!answerIsCorrect(answerBtnEl)) {
-                    answerBtnEl.classList.add("disabled");
+            // disable all incorrect answer button
+            for (const btn of answerBtnsEl.children) {
+                if (!isCorrect(btn)) {
+                    btn.classList.add("disabled");
                 }
             }
             // re-enable one incorrect answer button
@@ -199,29 +199,33 @@ function answerBtnMode(mode) {
             let remainingVotes = 100;
             let vote = Math.floor(Math.random() * remainingVotes);
             remainingVotes -= vote;
-            for (const answerBtnEl of answerBtnsEl.children) {
-                if (answerIsCorrect(answerBtnEl)) {
-                    answerBtnEl.style.background = `linear-gradient(to right, ${greenColor} ${vote}%, ${secondaryColor} ${vote}%`;
+            for (const btn of answerBtnsEl.children) {
+                if (isCorrect(btn)) {
+                    btn.style.background = `linear-gradient(to right, ${greenColor} ${vote}%, ${secondaryColor} ${vote}%`;
+                    break;
                 }
             }
             // calculate how many votes the incorrect answers got
-            for (const answerBtnEl of answerBtnsEl.children) {
-                if (!answerIsCorrect(answerBtnEl)) {
+            for (const btn of answerBtnsEl.children) {
+                if (!isCorrect(btn)) {
                     vote = Math.floor(Math.random() * remainingVotes);
                     remainingVotes -= vote;
-                    answerBtnEl.style.background = `linear-gradient(to right, ${greenColor} ${vote}%, ${secondaryColor} ${vote}%`;
+                    btn.style.background = `linear-gradient(to right, ${greenColor} ${vote}%, ${secondaryColor} ${vote}%`;
                 }
             }
             break;
         case "phone":
-            // the scientist is only right 75% of the time
+            // the scientist is right 75% of the time
             if (Math.random() > 0.25) {
-                for (const answerBtnEl of answerBtnsEl.children) {
-                    if (answerIsCorrect(answerBtnEl)) {
-                        answerBtnEl.classList.add("blue-border");
+                // highlight the correct answer
+                for (const btn of answerBtnsEl.children) {
+                    if (isCorrect(btn)) {
+                        btn.classList.add("blue-border");
+                        break;
                     }
                 }
             } else {
+                // highlight a random incorrect answer that is still active
                 randomIncorrectAnswer(true).classList.add("blue-border");
             }
             break;
@@ -272,28 +276,26 @@ function startGame() {
  * @param {HTMLButtonElement} button The answer button clicked by the user
  * @return {boolean} 'true' if the answer is correct, otherwise 'false'
  */
-function answerIsCorrect(button) {
+function isCorrect(button) {
     return button.innerHTML === currentQuestion.correct_answer;
 }
 
 /**
  * Get a random incorrect answer button.
  *
- * @param {boolean} isActive Whether the button must be active (not disabled)
+ * @param {boolean} mustBeActive Whether the button must be active (not disabled)
  * @return {HTMLButtonElement} A random incorrect answer button
  */
-function randomIncorrectAnswer(isActive) {
-    const answerBtnEls = Array.from(answerBtnsEl.children);
-    const isIncorrect = (btn) => !answerIsCorrect(btn);
+function randomIncorrectAnswer(mustBeActive) {
+    const isIncorrect = (btn) => !isCorrect(btn);
     const isIncorrectAndActive = (btn) => {
-        return !answerIsCorrect(btn) && !btn.classList.contains("disabled");
+        return !isCorrect(btn) && !btn.classList.contains("disabled");
     };
-    let incorrectBtnEls;
-    if (isActive) {
-        incorrectBtnEls = answerBtnEls.filter(isIncorrectAndActive);
+    let incorrectBtns;
+    if (mustBeActive) {
+        incorrectBtns = answerBtnElsArr.filter(isIncorrectAndActive);
     } else {
-        incorrectBtnEls = answerBtnEls.filter(isIncorrect);
+        incorrectBtns = answerBtnElsArr.filter(isIncorrect);
     }
-    const randomIndex = Math.floor(Math.random() * incorrectBtnEls.length);
-    return incorrectBtnEls[randomIndex];
+    return incorrectBtns[Math.floor(Math.random() * incorrectBtns.length)];
 }
