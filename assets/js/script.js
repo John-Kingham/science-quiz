@@ -15,9 +15,7 @@ const playAgainBtnEl = document.querySelector("#play-again");
 const secondaryColor = getComputedStyle(rootEl)
     .getPropertyValue("--secondary-color")
     .trim();
-const greenColor = getComputedStyle(rootEl)
-    .getPropertyValue("--green")
-    .trim();
+const greenColor = getComputedStyle(rootEl).getPropertyValue("--green").trim();
 const scores = [
     1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
 ];
@@ -58,7 +56,8 @@ function askTheInternet() {
  * Use the 50/50 lifeline.
  */
 function fiftyFifty() {
-    feedbackTxtEl.innerHTML = "Choose from the remaining two answers...";
+    feedbackTxtEl.innerHTML =
+        "Two answers have been deactivated. Choose from the remaining two...";
     fiftyBtnEl.classList.add("disabled");
     answerBtnMode("50/50");
 }
@@ -179,7 +178,7 @@ function answerBtnMode(mode) {
     switch (mode) {
         case "normal":
             for (const answerBtn of answerBtnsEl.children) {
-                answerBtn.classList.remove("disabled", 'blue-border');
+                answerBtn.classList.remove("disabled", "blue-border");
                 answerBtn.style.background = "";
             }
             break;
@@ -278,14 +277,14 @@ function answerIsCorrect(button) {
 /**
  * Get a random incorrect answer button.
  *
- * @param {boolean} isActive Whether the button must be active (not disabled) 
+ * @param {boolean} isActive Whether the button must be active (not disabled)
  * @return {HTMLButtonElement} A random incorrect answer button
  */
 function randomIncorrectAnswer(isActive) {
     const answerBtnEls = Array.from(answerBtnsEl.children);
     const isIncorrect = (btn) => !answerIsCorrect(btn);
     const isIncorrectAndActive = (btn) => {
-        return !answerIsCorrect(btn) && !btn.classList.contains('disabled');
+        return !answerIsCorrect(btn) && !btn.classList.contains("disabled");
     };
     let incorrectBtnEls;
     if (isActive) {
