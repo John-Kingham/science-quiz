@@ -239,7 +239,7 @@ function showInstructions() {
  * Show the next question.
  */
 function showNextQuestion() {
-    let answers = [];
+    const answers = [];
 
     // update screen with next question
     currentQuestion = questions.pop();
@@ -248,11 +248,11 @@ function showNextQuestion() {
 
     // update answer buttons with answers
     answers.push(currentQuestion.correct_answer);
-    for (let incorrectAnswer of currentQuestion.incorrect_answers) {
+    for (const incorrectAnswer of currentQuestion.incorrect_answers) {
         answers.push(incorrectAnswer);
     }
     answers.sort(); // sort to randomise
-    for (i = 0; i < answers.length; i++) {
+    for (let i = 0; i < answers.length; i++) {
         answerBtnsEl.children[i].innerHTML = answers[i];
         answerBtnsEl.children[i].classList.remove("green", "red");
     }
