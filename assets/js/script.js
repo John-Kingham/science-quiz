@@ -1,3 +1,5 @@
+/* jshint esversion: 11 */
+
 // Global variables for DOM elements
 const rootEl = document.documentElement;
 const welcomeTxtEl = document.querySelector("#welcome-txt");
