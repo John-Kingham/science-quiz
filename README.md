@@ -6,11 +6,11 @@ The game aims to inspire people to take an interest in science and the natural s
 
 Each game consists of a series of questions. Players gain points with each correct answer, with a maximum score of one million points, but if they answer incorrectly the game immediately ends. Players can get help if they run into a difficult question, by pressing the 50/50, Phone a Scientist and Ask the Internet buttons.
 
-**TODO**: Add an image of the site on various screen sizes using [Am I Responsive](https://ui.dev/amiresponsive).
+![The Science Quiz shown on multiple screen sizes](/docs/responsive-screenshots.png)
 
 ## User Experience Design
 
-The site was designed using the "five planes" method.
+The user experience was designed using the "five planes" method.
 
 ### Plane 1: Strategic goals
 
