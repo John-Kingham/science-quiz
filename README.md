@@ -109,3 +109,28 @@ As a simple quiz game, the site has very little in the way of written content, o
 - [Open Trivia Database API URL generator](https://opentdb.com/api_config.php)
 - [API URL used by the game](https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple)
 
+## Features
+
+### Existing Features
+
+#### Header Section
+
+#### Welcome Message
+
+#### Instructions
+
+#### Game Area
+
+#### Footer
+
+#### 404 Error Page
+
+### Future Features
+
+## Testing
+
+TBC: [TESTING.md](TESTING.md)
+
+## Deployment
+
+## Credits
