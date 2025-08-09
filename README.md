@@ -12,7 +12,7 @@ Each game consists of a series of questions. Players gain points with each corre
 
 The user experience was designed using the "five planes" method.
 
-### Plane 1: Strategic goals
+### Strategic Plane
 
 #### Site Goals
 
@@ -31,7 +31,7 @@ The user experience was designed using the "five planes" method.
   - To find out how much they know about natural science topics
   - To learn some new scientific-related facts about the world
 
-### Plane 2: Scope
+### Scope Plane
 
 #### User stories
 
@@ -41,7 +41,7 @@ The user experience was designed using the "five planes" method.
 1. As a user, I want clear feedback when I interact with the game, so I know how well (or badly) I’m doing.
 1. As a user, I want to see links to educational resources so I can learn more about the natural sciences.
 
-### Plane 3: Structure
+### Structure Plane
 
 To fulfil the user stories, the site has various sections:
 
@@ -57,7 +57,7 @@ The site has a single page, with the sections listed above either visible or hid
 
 ![Structure diagram](docs/structure-diagram.png)
 
-### Plane 4: Skeleton
+### Skeleton Plane
 
 Wireframes were developed for each of the site's four "modes" and for the three main screen sizes (mobile, tablet, desktop).
 
@@ -72,4 +72,40 @@ Wireframes were developed for each of the site's four "modes" and for the three 
 #### Desktop Wireframes
 
 ![Desktop Wireframes](docs/wireframes/desktop-wireframes.png)
+
+### Surface Plane
+
+#### Colour palette
+
+The site's colour palette is based on a visually striking background image that looks like a ball or energy or a neuron firing.
+
+- #af538c (a shade of pink) is the primary colour
+- #3a5172 (a shade of slate grey) is the secondary colour
+- #fff (white) is used for text
+- #333 (dark grey) is for shadows
+
+The game also uses three contrasting colours to provide feedback to the user; for example, when the user answers a questions correctly or incorrectly.
+
+- #00c8a1 (a shade of green)
+- #0080f9 (a shade of blue)
+- #d45179 (a shade of red)
+
+#### Custom fonts
+
+The site uses two custom fonts from [Google Fonts](https://fonts.google.com/).
+
+- [Audiowide](https://fonts.google.com/specimen/Audiowide): Used for headings
+- [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans): Used for all other text
+
+#### Images
+
+The main background image was chosen for its striking portrayal of a biological or electrical event, which will hopefully inspire users to take an active interest in science.
+
+#### Content
+
+As a simple quiz game, the site has very little in the way of written content, other than the quiz's questions and answers. These questions and answers are loaded from a freely available web API.
+
+- [Open Trivia Database](https://opentdb.com/)
+- [Open Trivia Database API URL generator](https://opentdb.com/api_config.php)
+- [API URL used by the game](https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple)
 
