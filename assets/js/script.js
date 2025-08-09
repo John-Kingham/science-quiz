@@ -174,7 +174,7 @@ function displayMode(mode) {
 /**
  * Set the display mode of the answer buttons.
  *
- * @param {String} mode - 'normal', '50/50', 'ask'
+ * @param {String} mode - 'normal', '50/50', 'ask', 'phone'
  */
 function answerBtnMode(mode) {
     switch (mode) {
