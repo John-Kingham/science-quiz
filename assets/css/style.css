@@ -26,6 +26,10 @@ body {
     margin: 0;
 }
 
+a {
+    color: var(--text-color);
+}
+
 .hidden {
     display: none;
 }
@@ -76,7 +80,7 @@ main {
     display: flex;
 }
 
-button {
+.btn {
     padding: 0.75rem;
     margin: 1rem auto;
     background-color: var(--secondary-color);
@@ -89,7 +93,7 @@ button {
     border: 0.25rem solid var(--green);
 }
 
-button:active {
+.btn:active {
     box-shadow: 0 0 10px 0 var(--green);
 }
 
@@ -136,10 +140,6 @@ footer {
     flex-wrap: wrap;
 }
 
-a {
-    color: var(--text-color);
-}
-
 #footer-nav a {
     padding: 0.5rem;
 }
@@ -147,7 +147,7 @@ a {
 /* Media queries */
 
 @media (hover: hover) {
-    button:hover {
+    .btn:hover {
         box-shadow: 0 0 10px 0 var(--green);
     }
 }
