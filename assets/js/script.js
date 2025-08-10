@@ -1,7 +1,6 @@
 /* jshint esversion: 11 */
 
 // Global variables for DOM elements
-const rootEl = document.documentElement;
 const welcomeTxtEl = document.querySelector("#welcome-txt");
 const instructionsTxtEl = document.querySelector("#instructions-txt");
 const gameAreaEl = document.querySelector("#game-area");
@@ -14,14 +13,18 @@ const fiftyBtnEl = document.querySelector("#fifty-btn");
 const askBtnEl = document.querySelector("#ask-btn");
 const phoneBtnEl = document.querySelector("#phone-btn");
 const playAgainBtnEl = document.querySelector("#play-again");
-const secondaryColor = getComputedStyle(rootEl)
+const answerBtnElsArr = Array.from(answerBtnsEl.children);
+
+// Other global variables
+const secondaryColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--secondary-color")
     .trim();
-const greenColor = getComputedStyle(rootEl).getPropertyValue("--green").trim();
+const greenColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--green")
+    .trim();
 const scores = [
     1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
 ];
-const answerBtnElsArr = Array.from(answerBtnsEl.children);
 let questions;
 let currentQuestion;
 let score = 0;
