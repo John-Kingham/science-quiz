@@ -59,7 +59,7 @@ function askTheInternet() {
  */
 function fiftyFifty() {
     feedbackTxtEl.innerHTML =
-        "Two answers have been deactivated. Choose from the remaining two...";
+        "Two incorrect answers have been deactivated. Choose from the remaining two...";
     fiftyBtnEl.classList.add("disabled");
     answerBtnMode("50/50");
 }
@@ -69,7 +69,7 @@ function fiftyFifty() {
  */
 function phoneAScientist() {
     feedbackTxtEl.innerHTML =
-        "The scientist's answer is in blue, but remember, scientists are not always right!";
+        "The scientist's answer is in blue, but remember, scientists are usually right, but not always!";
     phoneBtnEl.classList.add("disabled");
     answerBtnMode("phone");
 }
