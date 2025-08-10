@@ -85,11 +85,10 @@ function loadQuestions() {
         "https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple"
     )
         .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
+            if (!response.ok) {
                 throw new Error(`Error with status: ${response.status}`);
             }
+            return response.json();
         })
         .then((json) => {
             questions = json.results;
