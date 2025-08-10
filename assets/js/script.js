@@ -111,20 +111,20 @@ function respondToAnswer(event) {
     answerBtnMode("normal");
     if (isCorrect(answerBtnEl)) {
         score = scores.pop();
-        feedbackTxtEl.innerHTML = `<em>Correct! You now have ${score.toLocaleString()} points!</em>`;
+        feedbackTxtEl.innerHTML = `Correct! You now have ${score.toLocaleString()} points!`;
         answerBtnEl.classList.add("green");
         if (questions.length) {
             setTimeout(showNextQuestion, 2000);
         } else {
-            feedbackTxtEl.innerHTML += `<em>&nbsp;That means you've answered every question correctly, so you are a true champion of science!</em>`;
+            feedbackTxtEl.innerHTML += `&nbsp;That means you've answered every question correctly, so you are a true champion of science!`;
             displayMode("end");
         }
     } else {
         answerBtnEl.classList.add("red");
-        feedbackTxtEl.innerHTML = `<em>Wrong! The correct answer was: ${
+        feedbackTxtEl.innerHTML = `Wrong! The correct answer was: ${
             currentQuestion.correct_answer
         }.&nbsp;
-            That means it's game over and your final score was ${score.toLocaleString()} points!</em>`;
+            That means it's game over and your final score was ${score.toLocaleString()} points!`;
         displayMode("end");
     }
 }
