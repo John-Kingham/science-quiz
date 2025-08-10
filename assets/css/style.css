@@ -30,6 +30,11 @@ a {
     color: var(--text-color);
 }
 
+h1,
+h2 {
+    font-family: var(--heading-font);
+}
+
 .hidden {
     display: none;
 }
@@ -42,7 +47,6 @@ header {
     background-color: var(--primary-color);
     color: var(--text-color);
     text-align: center;
-    font-family: var(--heading-font);
     box-shadow: 0 2px 2px 0 var(--shadow-color);
 }
 
@@ -61,7 +65,7 @@ main {
     border-radius: 1rem;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
     padding: 2rem 1rem;
-    font-family: "Noto Sans";
+    font-family: var(--body-font);
     background-color: var(--secondary-color);
     color: var(--text-color);
 }
@@ -134,7 +138,7 @@ footer {
     background-color: var(--primary-color);
     color: var(--text-color);
     text-align: center;
-    font-family: var(--heading-font);
+    font-family: var(--body-font);
     box-shadow: 0 -2px 2px 0 var(--shadow-color);
 }
 
