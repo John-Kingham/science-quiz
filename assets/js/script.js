@@ -114,7 +114,6 @@ function respondToAnswer(event) {
     if (isCorrect(answerBtnEl)) {
         score = scores.pop();
         feedbackTxtEl.innerHTML = `Correct! You now have ${score.toLocaleString()} points!`;
-        answerBtnEl.classList.add("green");
         if (questions.length) {
             setTimeout(showNextQuestion, 2000);
         } else {
@@ -190,13 +189,19 @@ function answerBtnMode(mode, answerBtnEl) {
             }
             break;
         case "answer":
-            // disable all buttons and make unselected buttons transparent
+            // disable and remove styling from all buttons
             for (const btn of answerBtnsEl.children) {
                 btn.classList.remove("blue-border");
                 btn.style.background = "";
                 btn.classList.add("disabled");
+                // make unselected buttons transparent
                 if (btn !== answerBtnEl) {
                     btn.classList.add("transparent");
+                }
+                // highlight the correct answer
+                if (isCorrect(btn)) {
+                    btn.classList.add('green');
+                    btn.classList.remove("transparent");
                 }
             }
             break;
