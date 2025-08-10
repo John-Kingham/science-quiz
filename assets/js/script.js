@@ -53,7 +53,7 @@ function addEventListeners() {
 function askTheInternet() {
     feedbackTxtEl.innerHTML =
         "The green bars represent votes from the Internet. But beware, the Internet is not always right!";
-    askBtnEl.classList.add("disabled");
+    askBtnEl.classList.add("disabled", "transparent");
     answerBtnMode("ask");
 }
 
@@ -63,7 +63,7 @@ function askTheInternet() {
 function fiftyFifty() {
     feedbackTxtEl.innerHTML =
         "Two incorrect answers have been deactivated. Choose from the remaining two...";
-    fiftyBtnEl.classList.add("disabled");
+    fiftyBtnEl.classList.add("disabled", "transparent");
     answerBtnMode("50/50");
 }
 
@@ -73,7 +73,7 @@ function fiftyFifty() {
 function phoneAScientist() {
     feedbackTxtEl.innerHTML =
         "The scientist's answer is in blue, but remember, scientists are usually right, but not always!";
-    phoneBtnEl.classList.add("disabled");
+    phoneBtnEl.classList.add("disabled", "transparent");
     answerBtnMode("phone");
 }
 
@@ -110,7 +110,7 @@ function loadQuestions() {
 function respondToAnswer(event) {
     const answerBtnEl = event.target;
 
-    answerBtnMode("normal");
+    answerBtnMode("answer", answerBtnEl);
     if (isCorrect(answerBtnEl)) {
         score = scores.pop();
         feedbackTxtEl.innerHTML = `Correct! You now have ${score.toLocaleString()} points!`;
@@ -176,25 +176,42 @@ function displayMode(mode) {
 /**
  * Set the display mode of the answer buttons.
  *
- * @param {String} mode - 'normal', '50/50', 'ask', 'phone'
+ * @param {String} mode 'normal', 'answer', '50/50', 'ask', 'phone'
+ * @param {HTMLButtonElement} answerBtnEl
+ *      (optional) For 'answer' mode, the answer button clicked by the user
  */
-function answerBtnMode(mode) {
+function answerBtnMode(mode, answerBtnEl) {
     switch (mode) {
         case "normal":
+            // remove all additional styling from answer buttons
             for (const btn of answerBtnsEl.children) {
-                btn.classList.remove("disabled", "blue-border");
+                btn.classList.remove("disabled", "transparent", "blue-border");
                 btn.style.background = "";
+            }
+            break;
+        case "answer":
+            // disable all buttons and make unselected buttons transparent
+            for (const btn of answerBtnsEl.children) {
+                btn.classList.remove("blue-border");
+                btn.style.background = "";
+                btn.classList.add("disabled");
+                if (btn !== answerBtnEl) {
+                    btn.classList.add("transparent");
+                }
             }
             break;
         case "50/50":
             // disable all incorrect answer button
             for (const btn of answerBtnsEl.children) {
                 if (!isCorrect(btn)) {
-                    btn.classList.add("disabled");
+                    btn.classList.add("disabled", "transparent");
                 }
             }
             // re-enable one incorrect answer button
-            randomIncorrectAnswer(false).classList.remove("disabled");
+            randomIncorrectAnswer(false).classList.remove(
+                "disabled",
+                "transparent"
+            );
             break;
         case "ask":
             // calculate how many votes the correct answer got
