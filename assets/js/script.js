@@ -1,14 +1,14 @@
 /* jshint esversion: 11 */
 
 // Global variables for DOM elements
-const welcomeTxtEl = document.querySelector("#welcome-txt");
-const instructionsTxtEl = document.querySelector("#instructions-txt");
+const welcomeAreaEl = document.querySelector("#welcome-area");
+const instructionsAreaEl = document.querySelector("#instructions-area");
 const gameAreaEl = document.querySelector("#game-area");
 const loseAreaEl = document.querySelector("#lose-area");
 const loseTxtEl = document.querySelector("#lose-txt");
 const winAreaEl = document.querySelector("#win-area");
 const winTxtEl = document.querySelector("#win-txt");
-const questionHdrEl = document.querySelector('#question-hdr');
+const questionHdrEl = document.querySelector("#question-hdr");
 const questionTxtEl = document.querySelector("#question-txt");
 const feedbackTxtEl = document.querySelector("#feedback-txt");
 const answerBtnsEl = document.querySelector("#answer-btns");
@@ -150,15 +150,15 @@ function reloadPage() {
 function displayMode(mode) {
     switch (mode) {
         case "instructions":
-            welcomeTxtEl.classList.add("hidden");
+            welcomeAreaEl.classList.add("hidden");
             instructionsBtnEl.classList.add("hidden");
-            instructionsTxtEl.classList.remove("hidden");
+            instructionsAreaEl.classList.remove("hidden");
             gameAreaEl.classList.add("hidden");
             break;
         case "game":
             // hide non-game content
-            welcomeTxtEl.classList.add("hidden");
-            instructionsTxtEl.classList.add("hidden");
+            welcomeAreaEl.classList.add("hidden");
+            instructionsAreaEl.classList.add("hidden");
             playBtnEl.classList.add("hidden");
             instructionsBtnEl.classList.add("hidden");
             // show the game panel and buttons
