@@ -87,7 +87,7 @@ function phoneAScientist() {
  */
 function loadQuestions() {
     fetch(
-        "https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple"
     )
         .then((response) => {
             if (!response.ok) {
