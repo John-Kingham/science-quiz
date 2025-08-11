@@ -17,6 +17,7 @@
 }
 
 /* General styles */
+
 body {
     background: center/cover no-repeat url(../images/ball-of-energy.jpg);
     display: flex;
@@ -155,7 +156,7 @@ footer {
     padding: 0.5rem;
 }
 
-/* Media queries */
+/* Media queries for responsiveness */
 
 @media (hover: hover) {
     .btn:hover {

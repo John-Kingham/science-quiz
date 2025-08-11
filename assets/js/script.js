@@ -112,7 +112,7 @@ function loadQuestions() {
 /**
  * Respond to the user's answer.
  *
- * @param {Event} event
+ * @param {Event} event The triggering event
  */
 function respondToAnswer(event) {
     const answerBtnEl = event.target;
@@ -124,8 +124,6 @@ function respondToAnswer(event) {
         if (questions.length) {
             setTimeout(showNextQuestion, timeOut);
         } else {
-            // feedbackTxtEl.innerHTML +=
-            //     "&nbsp;That means you've answered every question correctly, so you are a true champion of science!";
             winTxtEl.innerHTML += ` Your final score was ${score.toLocaleString()} points!`;
             setTimeout(displayMode, timeOut, "win");
         }
