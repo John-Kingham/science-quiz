@@ -8,6 +8,7 @@ const loseAreaEl = document.querySelector("#lose-area");
 const loseTxtEl = document.querySelector("#lose-txt");
 const winAreaEl = document.querySelector("#win-area");
 const winTxtEl = document.querySelector("#win-txt");
+const questionHdrEl = document.querySelector('#question-hdr');
 const questionTxtEl = document.querySelector("#question-txt");
 const feedbackTxtEl = document.querySelector("#feedback-txt");
 const answerBtnsEl = document.querySelector("#answer-btns");
@@ -33,6 +34,7 @@ const timeOut = 3000;
 let questions;
 let currentQuestion;
 let score = 0;
+let questionNum = 0;
 
 loadQuestions();
 addEventListeners();
@@ -291,6 +293,7 @@ function showNextQuestion() {
 
     // update screen with next question
     currentQuestion = questions.pop();
+    questionHdrEl.innerHTML = `Question ${++questionNum} of 10:`;
     questionTxtEl.innerHTML = currentQuestion.question;
     feedbackTxtEl.innerHTML = "&nbsp;";
 
