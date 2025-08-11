@@ -4,6 +4,8 @@
 const welcomeTxtEl = document.querySelector("#welcome-txt");
 const instructionsTxtEl = document.querySelector("#instructions-txt");
 const gameAreaEl = document.querySelector("#game-area");
+const loseAreaEl = document.querySelector("#lose-area");
+const loseTxtEl = document.querySelector("#lose-txt");
 const questionTxtEl = document.querySelector("#question-txt");
 const feedbackTxtEl = document.querySelector("#feedback-txt");
 const answerBtnsEl = document.querySelector("#answer-btns");
@@ -25,6 +27,7 @@ const greenColor = getComputedStyle(document.documentElement)
 const scores = [
     1000000, 500000, 250000, 125000, 64000, 32000, 16000, 8000, 4000, 1000,
 ];
+const timeOut = 3000;
 let questions;
 let currentQuestion;
 let score = 0;
@@ -115,18 +118,17 @@ function respondToAnswer(event) {
         score = scores.pop();
         feedbackTxtEl.innerHTML = `Correct! You now have ${score.toLocaleString()} points!`;
         if (questions.length) {
-            setTimeout(showNextQuestion, 2000);
+            setTimeout(showNextQuestion, timeOut);
         } else {
-            feedbackTxtEl.innerHTML += `&nbsp;That means you've answered every question correctly, so you are a true champion of science!`;
-            displayMode("end");
+            feedbackTxtEl.innerHTML +=
+                "&nbsp;That means you've answered every question correctly, so you are a true champion of science!";
+            displayMode("win");
         }
     } else {
         answerBtnEl.classList.add("red");
-        feedbackTxtEl.innerHTML = `Wrong! The correct answer was: ${
-            currentQuestion.correct_answer
-        }.&nbsp;
-            That means it's game over and your final score was ${score.toLocaleString()} points!`;
-        displayMode("end");
+        feedbackTxtEl.innerHTML = `Wrong! The correct answer was: ${currentQuestion.correct_answer}.`;
+        loseTxtEl.innerHTML += ` Your final score was ${score.toLocaleString()} points!`;
+        setTimeout(displayMode, timeOut, "lose");
     }
 }
 
@@ -162,7 +164,17 @@ function displayMode(mode) {
             askBtnEl.classList.remove("hidden");
             phoneBtnEl.classList.remove("hidden");
             break;
-        case "end":
+        case "win":
+            // hide the game buttons
+            fiftyBtnEl.classList.add("hidden");
+            askBtnEl.classList.add("hidden");
+            phoneBtnEl.classList.add("hidden");
+            // show the Play Again button
+            playAgainBtnEl.classList.remove("hidden");
+        case "lose":
+            // show the lose game message
+            gameAreaEl.classList.add("hidden");
+            loseAreaEl.classList.remove("hidden");
             // hide the game buttons
             fiftyBtnEl.classList.add("hidden");
             askBtnEl.classList.add("hidden");
@@ -200,7 +212,7 @@ function answerBtnMode(mode, answerBtnEl) {
                 }
                 // highlight the correct answer
                 if (isCorrect(btn)) {
-                    btn.classList.add('green');
+                    btn.classList.add("green");
                     btn.classList.remove("transparent");
                 }
             }
