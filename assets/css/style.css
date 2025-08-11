@@ -57,10 +57,7 @@ main {
     margin: auto 0 5rem;
 }
 
-#game-area,
-#welcome-txt,
-#instructions-txt,
-#error-404 {
+.main-card {
     border: 0.5rem solid var(--primary-color);
     border-radius: 1rem;
     box-shadow: 0 2px 2px 0 var(--shadow-color);
