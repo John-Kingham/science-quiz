@@ -6,6 +6,8 @@ const instructionsTxtEl = document.querySelector("#instructions-txt");
 const gameAreaEl = document.querySelector("#game-area");
 const loseAreaEl = document.querySelector("#lose-area");
 const loseTxtEl = document.querySelector("#lose-txt");
+const winAreaEl = document.querySelector("#win-area");
+const winTxtEl = document.querySelector("#win-txt");
 const questionTxtEl = document.querySelector("#question-txt");
 const feedbackTxtEl = document.querySelector("#feedback-txt");
 const answerBtnsEl = document.querySelector("#answer-btns");
@@ -85,7 +87,7 @@ function phoneAScientist() {
  */
 function loadQuestions() {
     fetch(
-        "https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple"
+        "https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple"
     )
         .then((response) => {
             if (!response.ok) {
@@ -120,9 +122,10 @@ function respondToAnswer(event) {
         if (questions.length) {
             setTimeout(showNextQuestion, timeOut);
         } else {
-            feedbackTxtEl.innerHTML +=
-                "&nbsp;That means you've answered every question correctly, so you are a true champion of science!";
-            displayMode("win");
+            // feedbackTxtEl.innerHTML +=
+            //     "&nbsp;That means you've answered every question correctly, so you are a true champion of science!";
+            winTxtEl.innerHTML += ` Your final score was ${score.toLocaleString()} points!`;
+            setTimeout(displayMode, timeOut, "win");
         }
     } else {
         answerBtnEl.classList.add("red");
@@ -142,7 +145,7 @@ function reloadPage() {
 /**
  * Set the game's display mode.
  *
- * @param {String} mode - 'instructions', 'game', 'end'
+ * @param {String} mode 'instructions', 'game', 'win', 'lose'
  */
 function displayMode(mode) {
     switch (mode) {
@@ -165,14 +168,18 @@ function displayMode(mode) {
             phoneBtnEl.classList.remove("hidden");
             break;
         case "win":
+            // show the win game area
+            gameAreaEl.classList.add("hidden");
+            winAreaEl.classList.remove("hidden");
             // hide the game buttons
             fiftyBtnEl.classList.add("hidden");
             askBtnEl.classList.add("hidden");
             phoneBtnEl.classList.add("hidden");
             // show the Play Again button
             playAgainBtnEl.classList.remove("hidden");
+            break;
         case "lose":
-            // show the lose game message
+            // show the lose game area
             gameAreaEl.classList.add("hidden");
             loseAreaEl.classList.remove("hidden");
             // hide the game buttons
@@ -181,6 +188,7 @@ function displayMode(mode) {
             phoneBtnEl.classList.add("hidden");
             // show the Play Again button
             playAgainBtnEl.classList.remove("hidden");
+            break;
     }
 }
 
