@@ -47,7 +47,7 @@ header {
     background-color: var(--primary-color);
     color: var(--text-color);
     text-align: center;
-    box-shadow: 0 2px 2px 0 var(--shadow-color);
+    box-shadow: 0 2px 2px var(--shadow-color);
 }
 
 /* Main styles */
@@ -60,7 +60,7 @@ main {
 .main-card {
     border: 0.5rem solid var(--primary-color);
     border-radius: 1rem;
-    box-shadow: 0 2px 2px 0 var(--shadow-color);
+    box-shadow: 2px 2px 2px var(--shadow-color);
     padding: 0.25rem 1rem;
     font-family: var(--body-font);
     background-color: var(--secondary-color);
@@ -95,18 +95,19 @@ main {
     font-family: var(--body-font);
     font-weight: var(--bold);
     font-size: 1rem;
-    box-shadow: 0 2px 2px 0 var(--shadow-color);
+    box-shadow: 2px 2px 2px var(--shadow-color);
     border-radius: 1rem;
     border: 0.25rem solid var(--green);
 }
 
 .btn:active {
-    box-shadow: 0 0 10px 0 var(--green);
+    box-shadow: 0 0 10px var(--green);
 }
 
 .answer-btn {
     display: block;
     width: 100%;
+    text-shadow: 2px 2px 2px var(--shadow-color);
 }
 
 .disabled {
