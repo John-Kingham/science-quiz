@@ -113,10 +113,10 @@ As a simple quiz game, the site has very little in the way of written content, o
 
 ### Existing Features
 
-#### Header Section
+#### Game Title Section (header)
 
 - The site contains a header section at the top of the page.
-- It contains the name of the game in a large font size using the custom heading font. Text is in white.
+- It contains the title of the game in a large font size using the custom heading font. Text is in white.
 - The background uses the primary pink colour, which is also used in the footer and other parts of the site.
 - This section is useful to users because it clearly tells them which site they are on and what type of game they're about to play.
 
@@ -156,11 +156,36 @@ As a simple quiz game, the site has very little in the way of written content, o
 
 ![Game section](./docs/game-section.png)
 
-#### Footer Section
+#### End Game Section
 
+- This section tells users whether they have won or lost the game. If the user answers any of the game's ten questions incorrectly, they lose, otherwise, they win.
+- It uses the same styles as the Welcome, Instructions and Game sections.
+- It contains a heading which clearly shows the user whether they won or lost, and some supporting text along with the user's final score.
+- This section also includes a Play Again button, so the user can start a new game if they wish. The Play Again button takes the user back to the Welcome section.
+- This section is useful to users because it clearly informs them of their win or loss, as well as their final score, and it enables them to quickly enter a new game.
 
+**End Game section when the user wins the game**
+![Win game section](./docs/win-section.png)
+**End Game section when the user loses the game**
+![Lose game section](./docs/lose-section.png)
+
+#### Resources Section (footer)
+
+- This section contains resources that users may find useful in their newly inspired pursuit of all things science.
+- It uses the same styles as the header (Game Title) section, with white text and a custom pink background. The text uses the site's custom heading and body fonts.
+- It contains a heading and links to three highly respected science-related sites, each of which opens in a new tab.
+- This section is useful to users because it gives them immediate access to free education content to help them take their new-found love of science to the next level.
+
+![Footer section](./docs/footer-section.png)
 
 #### 404 Error Page
+
+- This page is shown if the user enters an invalid URL.
+- It is based on the homepage (index.hmtml) and uses the same styles throughout.
+- It contains a simple error message and a link to return to the homepage.
+- This page is useful to users because it tells them when they've visited an invalid URL, while retaining the same styles as the site's valid page.
+
+![404 Error section](./docs/404-section.png)
 
 ### Future Features
 
