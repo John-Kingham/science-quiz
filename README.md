@@ -77,7 +77,7 @@ Wireframes were developed for each of the site's four "modes" and for the three 
 
 #### Colour palette
 
-The site's colour palette is based on a visually striking background image that looks like a ball or energy or a neuron firing.
+The colour palette is based on colours extracted from the game's visually striking background image, which looks like a ball or energy or a neuron firing.
 
 - #af538c (a shade of pink) is the primary colour
 - #3a5172 (a shade of slate grey) is the secondary colour
@@ -99,11 +99,11 @@ The site uses two custom fonts from [Google Fonts](https://fonts.google.com/).
 
 #### Images
 
-The main background image was chosen for its striking portrayal of a biological or electrical event, which will hopefully inspire users to take an active interest in science.
+The background image was chosen for its striking portrayal of a biological or electrical event, which is intended to inspire users to take an active interest in science.
 
 #### Content
 
-As a simple quiz game, the site has very little in the way of written content, other than the quiz's questions and answers. These questions and answers are loaded from a freely available web API.
+As a simple quiz game, the site has very little in the way of written content, other than the quiz's questions and answers. The questions and answers are loaded from a freely available web API.
 
 - [Open Trivia Database](https://opentdb.com/)
 - [Open Trivia Database API URL generator](https://opentdb.com/api_config.php)
@@ -114,6 +114,13 @@ As a simple quiz game, the site has very little in the way of written content, o
 ### Existing Features
 
 #### Header Section
+
+- The site contains a header section at the top of the page.
+- It contains the name of the game in a large font size using the custom heading font. Text is in white.
+- The background uses the primary pink colour, which is also used in the footer and other parts of the site.
+- This section is useful to users because it clearly tells them which site they are on and what type of game they're about to play.
+
+HEADER SECTION IMAGE
 
 #### Welcome Message
 
