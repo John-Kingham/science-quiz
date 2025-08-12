@@ -181,13 +181,23 @@ As a simple quiz game, the site has very little in the way of written content, o
 #### 404 Error Page
 
 - This page is shown if the user enters an invalid URL.
-- It is based on the homepage (index.hmtml) and uses the same styles throughout.
+- It is based on the homepage (index.html) and uses the same styles throughout.
 - It contains a simple error message and a link to return to the homepage.
 - This page is useful to users because it tells them when they've visited an invalid URL, while retaining the same styles as the site's valid page.
 
 ![404 Error section](./docs/404-section.png)
 
 ### Future Features
+
+#### Score Ladder
+
+- The wireframes show a "score ladder" where users can see how far they've come along the journey from zero to the maximum of one million points.
+- Due to time constraints, this feature has been deferred to a future release.
+
+#### Player Names, Multiple Players and High Scores
+
+- Although not in the initial design, there is clearly the potential to add additional functionality, such as multiple players and high scores, as well as personalisation by allowing users to enter a username.
+- These are all good feature candidates for future releases.
 
 ## Testing
 
