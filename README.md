@@ -120,15 +120,45 @@ As a simple quiz game, the site has very little in the way of written content, o
 - The background uses the primary pink colour, which is also used in the footer and other parts of the site.
 - This section is useful to users because it clearly tells them which site they are on and what type of game they're about to play.
 
-HEADER SECTION IMAGE
+![Header section](./docs/header-section.png)
 
-#### Welcome Message
+#### Welcome Section
 
-#### Instructions
+- This section contains a welcome message shown to users when they first visit the site and when they start a new game.
+- It has a striking background image which was chosen to catch the attention of visitors within a few seconds, to the conversion rate from visitor to player.
+- Text is in white and the header and body text use the site's customer header and body fonts.
+- The section's border is in the primary pink colour to attract attention, while the text area's background is in the secondary grey colour so as not to overly distract from the text.
+- Below the welcome message there are two buttons to start a new game and to view the instructions. These buttons have a contrasting green border to visually differentiate them from the welcome message above.
+- This section is useful to users because it gives them a more detailed explanation of what the game is and an outline of how it works. It also provides interactive buttons where they can start a new game or view instructions.
 
-#### Game Area
+![Welcome section](./docs/welcome-section.png)
 
-#### Footer
+#### Instructions Section
+
+- This section contains the game's instructions and only becomes visible after the user has clicked on the Instructions button. 
+- The game is relatively simple, so the instructions are deliberately concise rather than overly comprehensive.
+- It uses the same styles as the Welcome Section, with the same pink border, grey background, white text, custom fonts and button styling.
+- Below the instructions there is one button to start a new game.
+- This section is useful to users because it gives them enough detail to understand how to play the game, without being so long they get bored and leave the site.
+
+![Instructions section](./docs/instructions-section.png)
+
+#### Game Section
+
+- This section contains the game, and only becomes visible after the user has clicked on the Play Game button.
+- It uses the same styles as the Welcome and Instructions sections.
+- It contains a heading, which shows users which of the ten questions they are currently on.
+- It shows each question in turn, along with four possible answers, with each answer displayed within an answer button. Answer buttons use a contrasting green border to make them visually similar to the Play Game and Instructions buttons.
+- When the user selects an answer button, the other buttons become semi-transparent to de-emphasise them. The selected button turns green if the answer is correct, otherwise it turns red (using the site's custom green and red colours). 
+- After selecting an answer button, the user is shown a feedback message which informs them whether they were right or wrong and their current score. If the user was wrong, the correct answer button is highlighted in green. There is then a short pause before the next question auto-loads.
+- There are three Lifeline buttons: 50/50, Ask the Internet, and Phone a Scientist. These provide help to the user in different ways (e.g. 50/50 disables two incorrect answer buttons), without giving the answer away. You can find more details about how the lifelines work in the Testing section below.
+- This section is useful to users because it contains the interactive part of the game, which will entertain them and (hopefully) inspire them to take an interest in science.
+
+![Game section](./docs/game-section.png)
+
+#### Footer Section
+
+
 
 #### 404 Error Page
 
