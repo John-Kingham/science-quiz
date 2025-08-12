@@ -207,9 +207,11 @@ function answerBtnMode(mode, answerBtnEl) {
                 btn.classList.remove("disabled", "transparent", "blue-border");
                 btn.style.background = "";
             }
+            // enable unused lifelines
+            disableLifelines(false);
             break;
         case "answer":
-            // disable and remove styling from all buttons
+            // disable and remove styling from all answer buttons
             for (const btn of answerBtnsEl.children) {
                 btn.classList.remove("blue-border");
                 btn.style.background = "";
@@ -224,6 +226,8 @@ function answerBtnMode(mode, answerBtnEl) {
                     btn.classList.remove("transparent");
                 }
             }
+            // disable lifeline buttons
+            disableLifelines(true);
             break;
         case "50/50":
             // disable all incorrect answer button
@@ -273,6 +277,25 @@ function answerBtnMode(mode, answerBtnEl) {
                 randomIncorrectAnswer(true).classList.add("blue-border");
             }
             break;
+    }
+}
+
+/**
+ * Disables or enables unused lifelines
+ *
+ * @param {Boolean} disable Disable if true, otherwise enable
+ */
+function disableLifelines(disable) {
+    let lifelines = [fiftyBtnEl, askBtnEl, phoneBtnEl];
+
+    if (disable) {
+        lifelines.forEach((lifeline) => lifeline.classList.add("disabled"));
+    } else {
+        for (const lifeline of lifelines) {
+            if (!lifeline.classList.contains("transparent")) {
+                lifeline.classList.remove("disabled");
+            }
+        }
     }
 }
 
