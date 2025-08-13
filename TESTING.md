@@ -57,114 +57,132 @@
 
 ### Screenshots
 <details>
-<summary>Welcome Mobile Screenshot</summary>
+<summary>Welcome - Mobile</summary>
 
 ![Welcome mobile screenshot](./docs/testing/screenshot-welcome-mobile.png)
 </details>
 
 <details>
-<summary>Welcome Tablet Screenshot</summary>
+<summary>Welcome - Tablet</summary>
 
 ![Welcome tablet screenshot](./docs/testing/screenshot-welcome-tablet.png)
 </details>
 
 <details>
-<summary>Welcome Desktop Screenshot</summary>
+<summary>Welcome - Desktop</summary>
 
 ![Welcome desktop screenshot](./docs/testing/screenshot-welcome-desktop.png)
 </details>
 <br>
 <details>
-<summary>Instructions Mobile Screenshot</summary>
+<summary>Instructions - Mobile</summary>
 
 ![Instructions mobile screenshot](./docs/testing/screenshot-instructions-mobile.png)
 </details>
 
 <details>
-<summary>Instructions Tablet Screenshot</summary>
+<summary>Instructions - Tablet</summary>
 
 ![Instructions tablet screenshot](./docs/testing/screenshot-instructions-tablet.png)
 </details>
 
 <details>
-<summary>Instructions Desktop Screenshot</summary>
+<summary>Instructions - Desktop</summary>
 
 ![Instructions desktop screenshot](./docs/testing/screenshot-instructions-desktop.png)
 </details>
 <br>
 <details>
-<summary>Game Mobile Screenshot</summary>
+<summary>Game - Mobile</summary>
 
 ![Game mobile screenshot](./docs/testing/screenshot-game-mobile.png)
 </details>
 
 <details>
-<summary>Game Tablet Screenshot</summary>
+<summary>Game - Tablet</summary>
 
 ![Game tablet screenshot](./docs/testing/screenshot-game-tablet.png)
 </details>
 
 <details>
-<summary>Game Desktop Screenshot</summary>
+<summary>Game - Desktop</summary>
 
 ![Game desktop screenshot](./docs/testing/screenshot-game-desktop.png)
 </details>
 <br>
 <details>
-<summary>Lose Mobile Screenshot</summary>
+<summary>Lose - Mobile</summary>
 
 ![Lose mobile screenshot](./docs/testing/screenshot-lose-mobile.png)
 </details>
 
 <details>
-<summary>Lose Tablet Screenshot</summary>
+<summary>Lose - Tablet</summary>
 
 ![Lose tablet screenshot](./docs/testing/screenshot-lose-tablet.png)
 </details>
 
 <details>
-<summary>Lose Desktop Screenshot</summary>
+<summary>Lose - Desktop</summary>
 
 ![Lose desktop screenshot](./docs/testing/screenshot-lose-desktop.png)
 </details>
 <br>
 <details>
-<summary>Win Mobile Screenshot</summary>
+<summary>Win - Mobile</summary>
 
 ![Win mobile screenshot](./docs/testing/screenshot-win-mobile.png)
 </details>
 
 <details>
-<summary>Win Tablet Screenshot</summary>
+<summary>Win - Tablet</summary>
 
 ![Win tablet screenshot](./docs/testing/screenshot-win-tablet.png)
 </details>
 
 <details>
-<summary>Win Desktop Screenshot</summary>
+<summary>Win - Desktop</summary>
 
 ![Win desktop screenshot](./docs/testing/screenshot-win-desktop.png)
 </details>
 <br>
 <details>
-<summary>404 Mobile Screenshot</summary>
+<summary>404 - Mobile</summary>
 
 ![404 mobile screenshot](./docs/testing/screenshot-404-mobile.png)
 </details>
 
 <details>
-<summary>404 Tablet Screenshot</summary>
+<summary>404 - Tablet</summary>
 
 ![404 tablet screenshot](./docs/testing/screenshot-404-tablet.png)
 </details>
 
 <details>
-<summary>404 Desktop Screenshot</summary>
+<summary>404 - Desktop</summary>
 
 ![404 desktop screenshot](./docs/testing/screenshot-404-desktop.png)
 </details>
 
 ## Browsers
+
+The site's functionality and responsiveness were tested on Edge, Chrome and Firefox, as these are some of the most popular browsers.
+
+|Test|Edge|Chrome|Firefox|
+|---|---|---|---|
+|index.html functionality as expected?|Yes|Yes|Yes|
+|index.html responsiveness as expected?|Yes|Yes|Yes|
+|404.html functionality as expected?|Yes|Yes|Yes|
+|404.html responsiveness as expected?|Yes|Yes|Yes|
+
+All of the screenshots in the sections above were taken on Edge. Rather than include every screenshot for every browser, here are a few screenshots from Chrome and Firefox showing similar results to Edge:
+
+<details>
+<summary>Welcome - Desktop - Chrome</summary>
+
+![Welcome desktop screenshot on chrome](./docs/testing/screenshot-welcome-desktop-chrome.png)
+</details>
+
 
 ## Code Validation
 
