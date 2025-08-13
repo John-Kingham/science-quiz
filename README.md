@@ -201,7 +201,7 @@ As a simple quiz game, the site has very little in the way of written content, o
 
 ## Testing
 
-TBC: [TESTING.md](TESTING.md)
+The site was thoroughly tested, with all tests documented in [TESTING.md](TESTING.md).
 
 ## Deployment
 
