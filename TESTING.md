@@ -199,6 +199,29 @@ All of the screenshots in the sections above were taken on Edge. Rather than inc
 
 ### HTML Validation
 
+HTML was validated using the [W3C Markup Validation Service](https://validator.w3.org/).
+
+#### index.html Validation
+
+There were no errors or warnings, but there were six identical info messages.
+
+*Info: Trailing slash on void elements (not fixed)*
+
+- Trailing slashes are inserted by the Prettier formatting extension that I used in VS Code. Given that the point of using an opinionated auto-formatter is to standardise formatting and avoid formatting arguments, I decided to leave these trailing slashes in place, even though they are not considered best practice.
+
+![index.html validation result](./docs/testing/validation-html-index.png)
+
+#### 404.html Validation
+
+There were no errors, one warning and six identical info messages.
+
+*Warning: Possible misuse of aria-label (fixed)*
+
+- This was caused by having an aria-label attribute on the body element to provide information to screen readers about the body's background image. This causes a warning because screen readers don't typically process to body element directly. 
+
+![404.html validation result](./docs/testing/validation-html-404.png)
+
+
 ### CSS Validation
 
 ### JS Validation
