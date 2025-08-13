@@ -46,9 +46,123 @@
 
 ## Responsiveness
 
-
+|Page|Section|Mobile Responsive?|Tablet Responsive?|Desktop Responsive?|
+|---|---|---|---|---|
+|index.html|Welcome|Yes|Yes|Yes|
+|index.html|Instructions|Yes|Yes|Yes|
+|index.html|Game|Yes|Yes|Yes|
+|index.html|Lose|Yes|Yes|Yes|
+|index.html|Win|Yes|Yes|Yes|
+|404.html|N/A|Yes|Yes|Yes|
 
 ### Screenshots
+<details>
+<summary>Welcome Mobile Screenshot</summary>
+
+![Welcome mobile screenshot](./docs/testing/screenshot-welcome-mobile.png)
+</details>
+
+<details>
+<summary>Welcome Tablet Screenshot</summary>
+
+![Welcome tablet screenshot](./docs/testing/screenshot-welcome-tablet.png)
+</details>
+
+<details>
+<summary>Welcome Desktop Screenshot</summary>
+
+![Welcome desktop screenshot](./docs/testing/screenshot-welcome-desktop.png)
+</details>
+<br>
+<details>
+<summary>Instructions Mobile Screenshot</summary>
+
+![Instructions mobile screenshot](./docs/testing/screenshot-instructions-mobile.png)
+</details>
+
+<details>
+<summary>Instructions Tablet Screenshot</summary>
+
+![Instructions tablet screenshot](./docs/testing/screenshot-instructions-tablet.png)
+</details>
+
+<details>
+<summary>Instructions Desktop Screenshot</summary>
+
+![Instructions desktop screenshot](./docs/testing/screenshot-instructions-desktop.png)
+</details>
+<br>
+<details>
+<summary>Game Mobile Screenshot</summary>
+
+![Game mobile screenshot](./docs/testing/screenshot-game-mobile.png)
+</details>
+
+<details>
+<summary>Game Tablet Screenshot</summary>
+
+![Game tablet screenshot](./docs/testing/screenshot-game-tablet.png)
+</details>
+
+<details>
+<summary>Game Desktop Screenshot</summary>
+
+![Game desktop screenshot](./docs/testing/screenshot-game-desktop.png)
+</details>
+<br>
+<details>
+<summary>Lose Mobile Screenshot</summary>
+
+![Lose mobile screenshot](./docs/testing/screenshot-lose-mobile.png)
+</details>
+
+<details>
+<summary>Lose Tablet Screenshot</summary>
+
+![Lose tablet screenshot](./docs/testing/screenshot-lose-tablet.png)
+</details>
+
+<details>
+<summary>Lose Desktop Screenshot</summary>
+
+![Lose desktop screenshot](./docs/testing/screenshot-lose-desktop.png)
+</details>
+<br>
+<details>
+<summary>Win Mobile Screenshot</summary>
+
+![Win mobile screenshot](./docs/testing/screenshot-win-mobile.png)
+</details>
+
+<details>
+<summary>Win Tablet Screenshot</summary>
+
+![Win tablet screenshot](./docs/testing/screenshot-win-tablet.png)
+</details>
+
+<details>
+<summary>Win Desktop Screenshot</summary>
+
+![Win desktop screenshot](./docs/testing/screenshot-win-desktop.png)
+</details>
+<br>
+<details>
+<summary>404 Mobile Screenshot</summary>
+
+![404 mobile screenshot](./docs/testing/screenshot-404-mobile.png)
+</details>
+
+<details>
+<summary>404 Tablet Screenshot</summary>
+
+![404 tablet screenshot](./docs/testing/screenshot-404-tablet.png)
+</details>
+
+<details>
+<summary>404 Desktop Screenshot</summary>
+
+![404 desktop screenshot](./docs/testing/screenshot-404-desktop.png)
+</details>
 
 ## Browsers
 
