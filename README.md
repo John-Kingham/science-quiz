@@ -99,7 +99,7 @@ The site uses two custom fonts from [Google Fonts](https://fonts.google.com/).
 
 #### Images
 
-The background image was chosen for its striking portrayal of a biological or electrical event, which is intended to inspire users to take an active interest in science.
+A background image was chosen for its striking portrayal of a biological or electrical event, which is intended to inspire users to take an active interest in science.
 
 #### Content
 
@@ -108,6 +108,14 @@ As a simple quiz game, the site has very little in the way of written content, o
 - [Open Trivia Database](https://opentdb.com/)
 - [Open Trivia Database API URL generator](https://opentdb.com/api_config.php)
 - [API URL used by the game](https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple)
+
+## Technologies used
+
+### Languages
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## Features
 
