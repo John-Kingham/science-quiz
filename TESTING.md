@@ -40,9 +40,13 @@
 
 ### Page Not Found (404 Errors)
 
-
+|Feature|Expect|Action|Result|Image
+|---|---|---|---|---|
+|Bespoke 404 error page|If the user visits an invalid URL within the site, the bespoke 404 error page is shown|Visited an invalid URL within the site|As expected|![404 Error page](./docs/testing/404-test.png)|
 
 ## Responsiveness
+
+
 
 ### Screenshots
 
