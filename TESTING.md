@@ -183,6 +183,17 @@ All of the screenshots in the sections above were taken on Edge. Rather than inc
 ![Welcome desktop screenshot on chrome](./docs/testing/screenshot-welcome-desktop-chrome.png)
 </details>
 
+<details>
+<summary>Game - Mobile - Firefox</summary>
+
+![Game mobile screenshot on Firefox](./docs/testing/screenshot-game-mobile-firefox.png)
+</details>
+
+<details>
+<summary>404 - Tablet - Firefox</summary>
+
+![404 tablet screenshot on Firefox](./docs/testing/screenshot-404-tablet-firefox.png)
+</details>
 
 ## Code Validation
 
