@@ -203,9 +203,11 @@ HTML was validated using the [W3C Markup Validation Service](https://validator.w
 
 #### index.html Validation
 
-There were no errors or warnings, but there were six identical info messages.
+*Errors: None*
 
-*Info: Trailing slash on void elements (not fixed)*
+*Warnings: None*
+
+*Info (6): Trailing slash on void elements (not fixed)*
 
 - Trailing slashes are inserted by the Prettier formatting extension that I used in VS Code. Given that the point of using an opinionated auto-formatter is to standardise formatting and avoid formatting arguments, I decided to leave these trailing slashes in place, even though they are not considered best practice.
 
@@ -213,20 +215,37 @@ There were no errors or warnings, but there were six identical info messages.
 
 #### 404.html Validation
 
-There were no errors, one warning and six identical info messages.
+*Error: None*
 
-*Warning: Possible misuse of aria-label (fixed)*
+*Warning (1): Possible misuse of aria-label (fixed)*
 
 - This was caused by an aria-label attribute on the body element that describes the body element's background image. However, screen readers don't typically announce the body, as body background images should be decorative rather than informational. 
 - I had already fixed this in index.html during development, but forgot to fix it in 404.html.
 - I fixed this by removing the aria-label. 
 
-![404.html validation result](./docs/testing/validation-html-404.png)
+*Info (6): Trailing slash on void elements (not fixed)*
 
+- Trailing slashes are inserted by the Prettier formatting extension that I used in VS Code. Given that the point of using an opinionated auto-formatter is to standardise formatting and avoid formatting arguments, I decided to leave these trailing slashes in place, even though they are not considered best practice.
+
+![404.html validation result](./docs/testing/validation-html-404.png)
 
 ### CSS Validation
 
-### JS Validation
+CSS validation was carried out using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).
+
+#### styles.css
+
+*Error: None*
+
+![CSS validation errors](./docs/testing/validation-css-errors.png)
+
+*Warning (4): Due to their dynamic nature, CSS variables are currently not statically checked*
+
+- There are warnings about CSS variables not being statically checked by the validator. As the CSS variables have effectively been tested by the site's functional and visual tests, these warnings were ignored.
+
+![CSS validation warnings](./docs/testing/validation-css-warnings.png)
+
+### JavaScript Validation
 
 ## Contrast
 
