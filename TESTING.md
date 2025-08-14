@@ -247,7 +247,61 @@ CSS validation was carried out using the [W3C CSS Validation Service](https://ji
 
 ### JavaScript Validation
 
-## Contrast
+JavaScript validation was carried out using [JSHint](https://jshint.com/).
+
+#### script.js
+
+*Errors: None*
+
+*Warnings: None*
+
+![JavaScript validation](./docs/testing/validation-js.png)
+
+## Colour Contrast
+
+### White foreground (#fff), pink background (#af538c)
+
+This colour combination is used in the header and footer.
+
+*Normal text: Pass*
+
+![White-pink contrast check](./docs/testing/contrast-white-pink.png)
+
+### White foreground (#fff), grey background (#3a5172)
+
+This colour combination is used for buttons and the main content area.
+
+*Normal text: Pass*
+
+![White-grey contrast check](./docs/testing/contrast-white-grey.png)
+
+### White foreground (#fff), red background (#d45179)
+
+This colour combination is used when a user chooses an incorrect answer. 
+
+*Normal text: Fail*
+
+*Large text: Pass*
+
+- This colour combination fails with normal-sized text. The answer buttons originally had the default size of 16px (1rem), so this colour combination was unacceptable.
+- To fix this, I increased the answer button font size to 20px (1.25rem), which is considered large text by the contrast checker. This colour combination passes the large text test.
+- The answer buttons also have text shadows to further enhance the contrast. 
+
+![White-red contrast check](./docs/testing/contrast-white-red.png)
+
+### White foreground (#fff), green background (#00a887)
+
+This colour combination is used to highlight the correct answer button.
+
+*Normal text: Fail*
+
+*Large text: Pass*
+
+- The site originally used a lighter shade of green (#00c8a1) which failed the contrast checks for normal and large text.
+- To fix this, I changed it to a slightly darker shade of green that pass the large text test (answer buttons use large text).
+- Answer buttons also have dark text shadows to further enhance the contrast.
+
+![White-green contrast check](./docs/testing/contrast-white-green-new.png)
 
 ## Lighthouse
 

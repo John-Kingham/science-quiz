@@ -86,7 +86,7 @@ The colour palette is based on colours extracted from the game's visually striki
 
 The game also uses three contrasting colours to provide feedback to the user; for example, when the user answers a questions correctly or incorrectly.
 
-- #00c8a1 (a shade of green)
+- #00a887 (a shade of green)
 - #0080f9 (a shade of blue)
 - #d45179 (a shade of red)
 

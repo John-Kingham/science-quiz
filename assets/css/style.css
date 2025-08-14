@@ -10,7 +10,7 @@
     --secondary-color: #3a5172;
     --text-color: #fff;
     --shadow-color: #333;
-    --green: #00c8a1;
+    --green: #00a887;
     --blue: #0080f9;
     --red: #d45179;
     --bold: 700;
@@ -109,6 +109,7 @@ main {
     display: block;
     width: 100%;
     text-shadow: 2px 2px 2px var(--shadow-color);
+    font-size: 1.25rem;
 }
 
 .disabled {
