@@ -199,7 +199,7 @@ As a simple quiz game, the site has very little in the way of written content, o
 
 #### Score Ladder
 
-- The wireframes show a "score ladder" where users can see how far they've come along the journey from zero to the maximum of one million points.
+- The wireframes show a "score ladder" where users can see how far they've climbed along the journey from zero to the maximum of one million points.
 - Due to time constraints, this feature has been deferred to a future release.
 
 #### Player Names, Multiple Players and High Scores
@@ -212,5 +212,44 @@ As a simple quiz game, the site has very little in the way of written content, o
 The site was thoroughly tested, with all tests documented in [TESTING.md](TESTING.md).
 
 ## Deployment
+
+The Science Quiz has been deployed via GitHub pages.
+
+- In the [GitHub repository](https://github.com/John-Kingham/science-quiz), navigate to the "Settings" tab.
+- In Settings, click on the "Pages" link from the menu on the left.
+- From the "Build and deployment" section, click the drop-down called "Branch", and select the **main** branch, then click "Save".
+- The page will be automatically refreshed with a message display to indicate the successful deployment.
+- Allow up to 5 minutes for the site to fully deploy.
+
+The live link can be found on the [The Science Quiz GitHub Page](https://john-kingham.github.io/science-quiz).
+
+### Local Development
+
+This project can be cloned or forked to make a local copy on your own system.
+
+#### Cloning
+
+You can clone the repository using these steps:
+
+1. Go to the [GitHub repository](https://github.com/John-Kingham/science-quiz).
+2. Click on the green "Code" button near the top, above the commits and files.
+3. Select whether you prefer to clone using "HTTPS", "SSH", or "GitHub CLI", and click the "copy to clipboard" icon to copy the URL to your clipboard.
+4. Within your IDE, open "Git Bash" or "Terminal".
+5. Change the current working directory to the location where you want the cloned directory.
+6. In your IDE Terminal, type the following command to clone the repository:
+	- `git clone https://github.com/John-Kingham/science-quiz.git`
+7. Press "Enter" to create your local clone.
+
+#### Forking
+
+By forking the GitHub Repository, you make a copy of the original repository on your GitHub account to view and/or make changes without affecting the original repository. You can fork this repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/John-Kingham/science-quiz).
+2. At the top of the Repository, just below the "Settings" button on the menu, locate and click the "Fork" Button.
+3. Once clicked, you should now have a copy of the original repository in your own GitHub account.
+
+### Local VS Deployment
+
+There are no remaining major differences between the local version when compared to the deployed version online.
 
 ## Credits
