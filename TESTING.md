@@ -305,4 +305,14 @@ This colour combination is used to highlight the correct answer button.
 
 ## Lighthouse
 
+Each page was tested with Lighthouse, using Mobile and Desktop settings.
+
+|Page|Device|Result|
+|---|---|---|
+|index.html|Mobile|![index mobile lighthouse test](./docs/testing/lighthouse-index-mobile.png)|
+|index.html|Desktop|![index desktop lighthouse test](./docs/testing/lighthouse-index-desktop.png)|
+|404.html|Mobile|![404 mobile lighthouse test](./docs/testing/lighthouse-404-mobile.png)|
+|404.html|Desktop|![404 desktop lighthouse test](./docs/testing/lighthouse-404-desktop.png)|
+
 ## Unfixed Bugs
+
