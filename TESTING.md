@@ -217,7 +217,9 @@ There were no errors, one warning and six identical info messages.
 
 *Warning: Possible misuse of aria-label (fixed)*
 
-- This was caused by having an aria-label attribute on the body element to provide information to screen readers about the body's background image. This causes a warning because screen readers don't typically process to body element directly. 
+- This was caused by an aria-label attribute on the body element that describes the body element's background image. However, screen readers don't typically announce the body, as body background images should be decorative rather than informational. 
+- I had already fixed this in index.html during development, but forgot to fix it in 404.html.
+- I fixed this by removing the aria-label. 
 
 ![404.html validation result](./docs/testing/validation-html-404.png)
 
