@@ -253,3 +253,61 @@ By forking the GitHub Repository, you make a copy of the original repository on 
 There are no remaining major differences between the local version when compared to the deployed version online.
 
 ## Credits
+
+### User Experience Design
+
+- I used the five planes method (Strategy, Scope, Structure, Skeleton, Surface), as detailed in [The Elements of User Experience](http://www.jjg.net/elements/).
+
+#### Structure Plane
+
+- I used [Google Sheets](https://docs.google.com/spreadsheets) to create the site structure diagram.
+
+#### Skeleton Plane
+
+- I built the wireframes using [Wireframe.cc](https://www.wireframe.cc).
+
+#### Surface Plane
+
+##### Images
+
+The site's background image was downloaded from [UnSplash](https://unsplash.com/), which offers free images for private or commercial use without attribution. Here is the direct links to the image on Unsplash:
+
+- [A ball of energy with electricity beaming all over the place](https://unsplash.com/photos/purple-and-pink-plasma-ball-OgvqXGL7XO4)
+
+##### Colour Palette
+
+- The colour scheme was based on the site's background image (details below). 
+- I used Microsoft Paint to extract the site's primary pink colours from the image.
+- I used [ColorSpace](https://mycolor.space/) to generate a palette of colours based on the site's primary pink colour.
+
+##### Favicons
+
+- I used [Gauger.io](https://gauger.io/fonticon/) to create a favicon image using its "atom" icon.
+- I used [Favicon.io](https://favicon.io/) to convert the favicon into multiple favicon formats.
+
+#### Fonts
+
+- I used custom fonts from [Google Fonts](https://fonts.google.com/). The exact fonts are listed at the top of this readme.
+
+##### Content
+
+- The questions and answers are pulled from [Open Trivia Database](https://opentdb.com/), which my mentor (noted below) suggested.
+
+### Construction
+
+#### HTML, CSS and JavaScript
+
+- I wrote the site's code using [Visual Studio Code](https://code.visualstudio.com/).
+- I used [Mozilla Developer Network](https://developer.mozilla.org/), [W3Schools](https://www.w3schools.com/), [Code Institute](https://codeinstitute.net/), [Codecademy](https://www.codecademy.com/) and [Microsoft Copilot](https://copilot.microsoft.com/) for general reference.
+- I learned about JavaScript's fetch function and error handling from my mentor and Codecademy.
+- Microsoft Copilot showed me how to disable buttons using CSS, and how linear gradients could be used for the "Ask the Internet" visual effects.
+
+### Documentation
+
+- I used [Code Institute's README.md template](https://github.com/Code-Institute-Solutions/readme-template/blob/master/README.md) as the starting point for this document.
+- I used [Am I Responsive](https://ui.dev/amiresponsive) to generate the multi-screen image shown at the start of the README.
+- I used [Green Shot](https://getgreenshot.org/) for screenshots.
+
+## People
+
+- I would like to thank my mentor, [Simen Daehlin](https://github.com/Eventyret).
