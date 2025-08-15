@@ -284,7 +284,7 @@ This colour combination is used when a user chooses an incorrect answer.
 *Large text: Pass*
 
 - This colour combination fails with normal-sized text. The answer buttons originally had the default size of 16px (1rem), so this colour combination was unacceptable.
-- To fix this, I increased the answer button font size to 20px (1.25rem), which is considered large text by the contrast checker. This colour combination passes the large text test.
+- To fix this, I increased the answer button font size to 20px (1.25rem) and bold, which is considered large text by the contrast checker. This colour combination passes the large text test.
 - The answer buttons also have text shadows to further enhance the contrast. 
 
 ![White-red contrast check](./docs/testing/contrast-white-red.png)
@@ -298,7 +298,7 @@ This colour combination is used to highlight the correct answer button.
 *Large text: Pass*
 
 - The site originally used a lighter shade of green (#00c8a1) which failed the contrast checks for normal and large text.
-- To fix this, I changed it to a slightly darker shade of green that pass the large text test (answer buttons use large text).
+- To fix this, I changed it to a slightly darker shade of green that passes the large text test (answer buttons use large bold text).
 - Answer buttons also have dark text shadows to further enhance the contrast.
 
 ![White-green contrast check](./docs/testing/contrast-white-green-new.png)

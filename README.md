@@ -84,7 +84,7 @@ The colour palette is based on colours extracted from the game's visually striki
 - #fff (white) is used for text
 - #333 (dark grey) is for shadows
 
-The game also uses three contrasting colours to provide feedback to the user; for example, when the user answers a questions correctly or incorrectly.
+The game also uses three contrasting colours to provide feedback to the user; for example, when the user answers a question correctly or incorrectly.
 
 - #00a887 (a shade of green)
 - #0080f9 (a shade of blue)
@@ -301,6 +301,7 @@ The site's background image was downloaded from [UnSplash](https://unsplash.com/
 - I used [Mozilla Developer Network](https://developer.mozilla.org/), [W3Schools](https://www.w3schools.com/), [Code Institute](https://codeinstitute.net/), [Codecademy](https://www.codecademy.com/) and [Microsoft Copilot](https://copilot.microsoft.com/) for general reference.
 - I learned about JavaScript's fetch function and error handling from my mentor and Codecademy.
 - Microsoft Copilot showed me how to disable buttons using CSS, and how linear gradients could be used for the "Ask the Internet" visual effects.
+- Although I used various sites for reference, no external code was copy/pasted into the project or copied verbatim. 
 
 ### Documentation
 
